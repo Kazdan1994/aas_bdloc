@@ -36,15 +36,26 @@ class Fine
     private $comment;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="fines")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
     
+=======
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $user_id;
+
+>>>>>>> origin/master
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

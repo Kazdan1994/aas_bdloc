@@ -77,19 +77,7 @@ class Book
      */
     private $slug;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Serie", inversedBy="books")
-     * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
-     */
-    private $serie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author", inversedBy="books")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
-     */
-    private $author;
-
-    
     /**
      * Get id
      *
@@ -260,53 +248,4 @@ class Book
     {
         return $this->stock;
     }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Book
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-<<<<<<< HEAD
-
-    /**
-     * Set serie
-     *
-     * @param \AppBundle\Entity\Serie $serie
-     * @return Book
-     */
-    public function setSerie(\AppBundle\Entity\Serie $serie = null)
-    {
-        $this->serie = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Get serie
-     *
-     * @return \AppBundle\Entity\Serie 
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
-=======
->>>>>>> origin/master
 }
