@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * adresse
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\adresseRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\AdresseRepository")
  */
-class adresse
+class Adresse
 {
     /**
      * @var integer
@@ -48,7 +48,13 @@ class adresse
      * @ORM\Column(name="ville", type="string", length=255)
      */
     private $ville;
-
+    
+    
+   /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="adresses")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
 
     /**
      * Get id
@@ -150,5 +156,28 @@ class adresse
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Adresse
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

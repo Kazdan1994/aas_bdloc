@@ -69,7 +69,12 @@ class Author
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
-
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Book", mappedBy="author")
+     */
+    private $books;
 
     /**
      * Get id

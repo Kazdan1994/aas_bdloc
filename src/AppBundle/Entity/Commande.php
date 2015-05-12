@@ -10,8 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Entity\CommandeRepository")
  */
-class Commande
-{
+class Commande {
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", cascade={"persist"})
+     */
+    private $books;
+
     /**
      * @var integer
      *
@@ -35,14 +40,24 @@ class Commande
      */
     private $dateCommande;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="commandes")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PickUpSpot", inversedBy="commandes")
+     * @ORM\JoinColumn(name="pickUpSpot_id", referencedColumnName="id")
+     */
+    protected $pickUpSpot;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -52,8 +67,7 @@ class Commande
      * @param float $montant
      * @return Commande
      */
-    public function setMontant($montant)
-    {
+    public function setMontant($montant) {
         $this->montant = $montant;
 
         return $this;
@@ -64,8 +78,7 @@ class Commande
      *
      * @return float 
      */
-    public function getMontant()
-    {
+    public function getMontant() {
         return $this->montant;
     }
 
@@ -75,8 +88,7 @@ class Commande
      * @param \DateTime $dateCommande
      * @return Commande
      */
-    public function setDateCommande($dateCommande)
-    {
+    public function setDateCommande($dateCommande) {
         $this->dateCommande = $dateCommande;
 
         return $this;
@@ -87,8 +99,50 @@ class Commande
      *
      * @return \DateTime 
      */
-    public function getDateCommande()
-    {
+    public function getDateCommande() {
         return $this->dateCommande;
     }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Commande
+     */
+    public function setUser(\AppBundle\Entity\User $user = null) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * Set pickUpSpot
+     *
+     * @param \AppBundle\Entity\PickUpSpot $pickUpSpot
+     * @return Commande
+     */
+    public function setPickUpSpot(\AppBundle\Entity\PickUpSpot $pickUpSpot = null) {
+        $this->pickUpSpot = $pickUpSpot;
+
+        return $this;
+    }
+
+    /**
+     * Get pickUpSpot
+     *
+     * @return \AppBundle\Entity\PickUpSpot 
+     */
+    public function getPickUpSpot() {
+        return $this->pickUpSpot;
+    }
+
 }

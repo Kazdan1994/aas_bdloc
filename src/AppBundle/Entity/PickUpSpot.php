@@ -70,7 +70,12 @@ class PickUpSpot
      */
     private $horaire;
 
-
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="pickUpSpot")
+     */
+    private $commandes;
+    
     /**
      * Get id
      *

@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * serie
+ * Serie
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\serieRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\SerieRepository")
  */
-class serie
+class Serie
 {
     /**
      * @var integer
@@ -35,6 +35,12 @@ class serie
      */
     private $comment;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Book", mappedBy="serie")
+     */
+    private $books;
+    
 
     /**
      * Get id
@@ -90,5 +96,45 @@ class serie
     public function getComment()
     {
         return $this->comment;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->books = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add books
+     *
+     * @param \AppBundle\Entity\Book $books
+     * @return Serie
+     */
+    public function addBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books[] = $books;
+
+        return $this;
+    }
+
+    /**
+     * Remove books
+     *
+     * @param \AppBundle\Entity\Book $books
+     */
+    public function removeBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books->removeElement($books);
+    }
+
+    /**
+     * Get books
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBooks()
+    {
+        return $this->books;
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  *
- * @ORM\Table()
+ * @UniqueEntity("email")
+ * @ORM\Table(name="_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User
@@ -84,7 +85,24 @@ class User
      */
     private $dateInscription;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Adresse", mappedBy="user")
+     */
+    private $adresses;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Fine", mappedBy="user")
+     */
+    private $fines;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="user")
+     */
+    private $commandes;
+    
     /**
      * Get id
      *
@@ -300,5 +318,111 @@ class User
     public function getDateInscription()
     {
         return $this->dateInscription;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add adresses
+     *
+     * @param \AppBundle\Entity\Adresse $adresses
+     * @return User
+     */
+    public function addAdress(\AppBundle\Entity\Adresse $adresses)
+    {
+        $this->adresses[] = $adresses;
+
+        return $this;
+    }
+
+    /**
+     * Remove adresses
+     *
+     * @param \AppBundle\Entity\Adresse $adresses
+     */
+    public function removeAdress(\AppBundle\Entity\Adresse $adresses)
+    {
+        $this->adresses->removeElement($adresses);
+    }
+
+    /**
+     * Get adresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdresses()
+    {
+        return $this->adresses;
+    }
+
+    /**
+     * Add fines
+     *
+     * @param \AppBundle\Entity\Fine $fines
+     * @return User
+     */
+    public function addFine(\AppBundle\Entity\Fine $fines)
+    {
+        $this->fines[] = $fines;
+
+        return $this;
+    }
+
+    /**
+     * Remove fines
+     *
+     * @param \AppBundle\Entity\Fine $fines
+     */
+    public function removeFine(\AppBundle\Entity\Fine $fines)
+    {
+        $this->fines->removeElement($fines);
+    }
+
+    /**
+     * Get fines
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFines()
+    {
+        return $this->fines;
+    }
+
+    /**
+     * Add commandes
+     *
+     * @param \AppBundle\Entity\Commande $commandes
+     * @return User
+     */
+    public function addCommande(\AppBundle\Entity\Commande $commandes)
+    {
+        $this->commandes[] = $commandes;
+
+        return $this;
+    }
+
+    /**
+     * Remove commandes
+     *
+     * @param \AppBundle\Entity\Commande $commandes
+     */
+    public function removeCommande(\AppBundle\Entity\Commande $commandes)
+    {
+        $this->commandes->removeElement($commandes);
+    }
+
+    /**
+     * Get commandes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
     }
 }

@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class categorie
 {
     /**
+   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", cascade={"persist"})
+   */
+  private $books;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
