@@ -283,7 +283,6 @@ class Book
     {
         return $this->slug;
     }
-<<<<<<< HEAD
 
     /**
      * Set serie
@@ -307,6 +306,4 @@ class Book
     {
         return $this->serie;
     }
-=======
->>>>>>> origin/master
 }
