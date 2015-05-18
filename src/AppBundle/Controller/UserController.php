@@ -29,7 +29,7 @@ class UserController extends Controller {
         return $this->render(
                         'default/login.html.twig', array(
 // last username entered by the user
-                    'last_username' => $lastUsername,
+//                    'last_username' => $lastUsername,
                     'error' => $error,
                         )
         );
@@ -75,6 +75,7 @@ class UserController extends Controller {
     public function loginCheckAction() {
         
     }
+    
 
     /**
      * @Route("/logout", name="logout")

@@ -1,12 +1,23 @@
 security:
     providers:
-        in_memory:
-            memory: ~
+        main:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
-            security: false
+        main:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: home
+#        dev:
+#            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+#            security: false
 
         default:
             anonymous: ~
