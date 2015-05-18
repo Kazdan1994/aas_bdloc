@@ -306,4 +306,27 @@ class Book
     {
         return $this->serie;
     }
+
+    /**
+     * Set author
+     *
+     * @param \AppBundle\Entity\Author $author
+     * @return Book
+     */
+    public function setAuthor(\AppBundle\Entity\Author $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \AppBundle\Entity\Author 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 }
