@@ -1,0 +1,34 @@
+body
+{
+    background: grey;
+}
+
+.container
+{
+    margin: 0px auto;
+    width:960px;
+    padding:2em;
+    color:white;
+}
+
+.bt_co
+{
+    margin-top:5%;
+}
+
+#ptite_ligne
+{
+    font-size: 70%;
+    margin-top: 5%;
+}
+
+#register
+{
+    font-size: 85%;
+}
+
+#register a
+{
+    color: #D8D8FF;
+}
+

@@ -71,12 +71,7 @@ class User
      */
     private $token;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
-     */
-    private $role;
+  
 
     /**
      * @var \DateTime
@@ -102,6 +97,13 @@ class User
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="user")
      */
     private $commandes;
+    
+     /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles;
     
     /**
      * Get id
@@ -274,28 +276,8 @@ class User
         return $this->token;
     }
 
-    /**
-     * Set role
-     *
-     * @param string $role
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
+    
+   
 
     /**
      * Set dateInscription
@@ -424,5 +406,28 @@ class User
     public function getCommandes()
     {
         return $this->commandes;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array 
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }
