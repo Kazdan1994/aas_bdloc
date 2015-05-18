@@ -10,3 +10,8 @@ security:
 
         default:
             anonymous: ~
+
+    encoders:
+            AppBundle\Entity\User:
+                algorithm: sha512
+                iterations: 5000

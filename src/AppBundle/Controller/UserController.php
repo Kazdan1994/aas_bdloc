@@ -27,7 +27,7 @@ class UserController extends Controller {
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render(
-                        'default/login.html.twig', array(
+                        'default/index.html.twig', array(
 // last username entered by the user
                     'last_username' => $lastUsername,
                     'error' => $error,
@@ -48,7 +48,7 @@ class UserController extends Controller {
             $generator = new SecureRandom();
             $salt = bin2hex($generator->nextBytes(30));
             $token = bin2hex($generator->nextBytes(30));
-            $user->setSlat($salt);
+            $user->setSalt($salt);
             $user->setToken($token);
             $user->setDateInscription(new \DateTime());
 
@@ -66,7 +66,7 @@ class UserController extends Controller {
         $params = array(
             'registerForm' => $registerForm->createView()
         );
-        return $this->render("default/register_user.html.twig", $params);
+        return $this->render("user/register_user.html.twig", $params);
     }
 
     /**

@@ -1,17 +1,23 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
+ * @UniqueEntity("nom")
  * @UniqueEntity("email")
  * @ORM\Table(name="_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="email", message="Cet email n'est pas valide")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -26,6 +32,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nom;
 
@@ -33,6 +40,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $prenom;
 
@@ -40,6 +48,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -429,5 +439,13 @@ class User
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    public function getUsername() {
+
+    }
+
+    public function eraseCredentials() {
+
     }
 }
