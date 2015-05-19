@@ -15,14 +15,15 @@
             <div class="titre">BdLoc</div>
             <nav>
                 <ul class="nav nav-pills" id="menu">
-                    <li><a role="presentation" class="active" href="#" title="BDLOC | BD">Les BDs</a></li>
+                    <li><a role="presentation" class="active" href="{{ path('liste_bd') }}" title="BDLOC | BD">Les BDs</a></li>
                     <li><a role="presentation" class="active" href="#" title="BDLOC | Panier">Mon panier</a></li>
                     <li><a role="presentation" class="active" href="#" title="BDLOC | Compte">Mon compte</a></li>
                 </ul>
             </nav>
-
-            <p id="pseudo_deco">Bonjour machin</p></br>
-            <a id="deco" href="#" title="BDLOC | déconnexion">Déconnexion</a>
+            {% if app.user and is_granted("ROLE_USER") %}
+            <p id="pseudo_deco">TODO : Bonjour machin</p></br>
+            <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
+            {% endif %}
         </header>
     {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}

@@ -3,7 +3,7 @@ security:
         main:
             entity:
                 class: AppBundle\Entity\User
-                property: username
+                property: email
 
     firewalls:
         main:
@@ -12,9 +12,11 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
+                default_target_path:            /liste_bd
             logout:
                 path:   logout
                 target: home
+                
 #        dev:
 #            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
 #            security: false
