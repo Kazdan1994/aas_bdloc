@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * @UniqueEntity("nom")
  * @UniqueEntity("email")
  * @ORM\Table(name="_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
@@ -57,6 +56,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $password;
 
