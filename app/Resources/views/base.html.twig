@@ -16,8 +16,8 @@
             <nav>
                 <ul class="nav nav-pills" id="menu">
                     <li><a role="presentation" class="active" href="{{ path('liste_bd') }}" title="BDLOC | BD">Les BDs</a></li>
-                    <li><a role="presentation" class="active" href="#" title="BDLOC | Panier">Mon panier</a></li>
-                    <li><a role="presentation" class="active" href="#" title="BDLOC | Compte">Mon compte</a></li>
+                    <li><a role="presentation" class="" href="{{ path('panier') }}" title="BDLOC | Panier">Mon panier</a></li>
+                    <li><a role="presentation" class="" href="#" title="BDLOC | Compte">Mon compte</a></li>
                 </ul>
             </nav>
             {% if app.user and is_granted("ROLE_USER") %}
