@@ -3,6 +3,9 @@ body
     background: grey;
 }
 
+/*/////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE ACCUEIL/LOGIN///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
 
 .bt_co
 {
@@ -24,15 +27,19 @@ body
 {
     color: #D8D8FF;
 }
+
+
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE DE RECHERCHE///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
 .container
 {
     margin: 0px auto;
+    margin-top:2.5em;
     background: white;
     width:960px;
     padding:2em;
+    border-radius: 15px;
 }
 
 .titre
@@ -47,6 +54,7 @@ header
 /*    background: #F0F0F0;*/
     width:100%; 
 }
+
 
 /*////// Menu entête ////////*/
 nav ul li
@@ -80,6 +88,7 @@ nav
     font-size: 80%;
     margin-bottom: 2.25em;
 }
+
 
 /*/////// liste de checkbox //////*/
 #block_filtre
@@ -193,3 +202,60 @@ fieldset label
             float:left;
             width: 48%;
         }
+
+/*/////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE Panier///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
+#pan
+{
+    margin-top: 120px;
+}
+
+.article_panier
+{
+    margin-top: 2em;
+    height: 10em;
+    padding : 1%;
+    border: 1px solid black;
+}
+
+.image_article
+{
+    float: left;
+    width:10%;
+    height:8.5em;
+}
+
+.titre_article
+{
+    float: left;
+    margin: 5% 0 0 5%;
+    font-size: 120%;
+}
+
+.bt_suppr
+{
+    background: none;
+    border: 0px;
+    float: left;
+    margin: 5% 0 0 5%;
+    font-size: 120%;
+}
+
+.sup_article
+{
+    float: left;
+    margin-top:5.5%;
+    font-size: 80%;
+}
+
+#bt_valider
+{
+    margin-top:2em;
+    margin-right: 80%;
+}
+
+#bt_back
+{
+    margin-top:1em;
+}
