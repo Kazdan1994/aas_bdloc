@@ -64,6 +64,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
+     * @Assert\Regex("/^(^(1\s*[-\/\.]?)?(\((\d{3})\)|(\d{3}))\s*[-\/\.]?\s*(\d{3})\s*[-\/\.]?\s*(\d{4})\s*(([xX]|[eE][xX][tT])\.?\s*(\d+))*$)*$/")
      */
     private $telephone;
 
