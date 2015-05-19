@@ -27,7 +27,7 @@ class UserController extends Controller {
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render(
-                        'default/index.html.twig', array(
+                        'default/login.html.twig', array(
 // last username entered by the user
 //                    'last_username' => $lastUsername,
                     'error' => $error,
@@ -66,7 +66,7 @@ class UserController extends Controller {
         $params = array(
             'registerForm' => $registerForm->createView()
         );
-        return $this->render("user/register_user.html.twig", $params);
+        return $this->render("default/register_user.html.twig", $params);
     }
 
     /**
@@ -83,5 +83,4 @@ class UserController extends Controller {
     public function logoutAction() {
         
     }
-
 }
