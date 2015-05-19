@@ -17,11 +17,11 @@ class UserType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prenom')
-            ->add('email')
-            ->add('password', 'repeated')
-            ->add('telephone')
-            ->add('adresses', 'collection', array('type' => new AdresseType()))
+            ->add('prenom', 'text', array('label' => 'Prénom'))
+            ->add('email', 'email', array('label' => 'Adresse mail'))
+            ->add('password', 'repeated', array('first_options'  => array('label' => 'Mot de passe'),
+                                                'second_options' => array('label' => 'Mot de passe (validation)')))
+            ->add('telephone', 'text', array('label' => 'Numéro de téléphone'))
             ->add('S\'enregistrer', 'submit')
         ;
     }

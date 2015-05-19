@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Util\SecureRandom;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
-use AppBundle\Entity\Adresse;
 
 /**
  * @Route("")
@@ -42,9 +41,6 @@ class UserController extends Controller {
      */
     public function registerUserAction(Request $request) {
         $user = new User();
-
-        $adresse = new Adresse();
-        $user->addAdress($adresse);
 
         $registerForm = $this->createForm(new UserType(), $user);
 
