@@ -30,7 +30,7 @@ class UserController extends Controller {
         return $this->render(
                         'default/login.html.twig', array(
 // last username entered by the user
-//                    'last_username' => $lastUsername,
+                    'last_username' => $lastUsername,
                     'error' => $error,
                         )
         );
@@ -46,7 +46,7 @@ class UserController extends Controller {
 
         $registerForm->handleRequest($request);
         if ($registerForm->isValid()) {
-            $user->setRoles(array("ROLE_ADMIN"));
+            $user->setRoles(array("ROLE_USER"));
             $generator = new SecureRandom();
             $salt = bin2hex($generator->nextBytes(30));
             $token = bin2hex($generator->nextBytes(30));
@@ -60,6 +60,7 @@ class UserController extends Controller {
             );
 
             $user->setPassword($encoderPassword);
+
             $em = $this->get('doctrine')->getManager();
             $em->persist($user);
             $em->flush();
@@ -68,6 +69,7 @@ class UserController extends Controller {
         $params = array(
             'registerForm' => $registerForm->createView()
         );
+        
         return $this->render("default/register_user.html.twig", $params);
     }
 

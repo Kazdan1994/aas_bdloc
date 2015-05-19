@@ -12,6 +12,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/login.html.twig');
+        if($this->getUser()){
+            return $this->redirectToRoute("liste_bd");
+        }else{
+            return $this->redirectToRoute("login");
+        }
+        
     }
 }

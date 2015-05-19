@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
-
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,8 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  * @UniqueEntity(fields="email", message="Cet email n'est pas valide")
  */
-class User implements UserInterface
-{
+class User implements UserInterface {
+
     /**
      * @var integer
      *
@@ -82,8 +81,6 @@ class User implements UserInterface
      */
     private $token;
 
-  
-
     /**
      * @var \DateTime
      *
@@ -108,21 +105,20 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="user")
      */
     private $commandes;
-    
-     /**
+
+    /**
      * @var array
      *
      * @ORM\Column(name="roles", type="array")
      */
     private $roles;
-    
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -132,8 +128,7 @@ class User implements UserInterface
      * @param string $nom
      * @return User
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -144,8 +139,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -155,8 +149,7 @@ class User implements UserInterface
      * @param string $prenom
      * @return User
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
 
         return $this;
@@ -167,8 +160,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -178,8 +170,7 @@ class User implements UserInterface
      * @param string $email
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -190,8 +181,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -201,8 +191,7 @@ class User implements UserInterface
      * @param string $password
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -213,8 +202,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -224,8 +212,7 @@ class User implements UserInterface
      * @param string $telephone
      * @return User
      */
-    public function setTelephone($telephone)
-    {
+    public function setTelephone($telephone) {
         $this->telephone = $telephone;
 
         return $this;
@@ -236,8 +223,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getTelephone()
-    {
+    public function getTelephone() {
         return $this->telephone;
     }
 
@@ -247,8 +233,7 @@ class User implements UserInterface
      * @param string $salt
      * @return User
      */
-    public function setSalt($salt)
-    {
+    public function setSalt($salt) {
         $this->salt = $salt;
 
         return $this;
@@ -259,8 +244,7 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getSalt()
-    {
+    public function getSalt() {
         return $this->salt;
     }
 
@@ -270,8 +254,7 @@ class User implements UserInterface
      * @param string $token
      * @return User
      */
-    public function setToken($token)
-    {
+    public function setToken($token) {
         $this->token = $token;
 
         return $this;
@@ -282,13 +265,9 @@ class User implements UserInterface
      *
      * @return string 
      */
-    public function getToken()
-    {
+    public function getToken() {
         return $this->token;
     }
-
-    
-   
 
     /**
      * Set dateInscription
@@ -296,8 +275,7 @@ class User implements UserInterface
      * @param \DateTime $dateInscription
      * @return User
      */
-    public function setDateInscription($dateInscription)
-    {
+    public function setDateInscription($dateInscription) {
         $this->dateInscription = $dateInscription;
 
         return $this;
@@ -308,15 +286,14 @@ class User implements UserInterface
      *
      * @return \DateTime 
      */
-    public function getDateInscription()
-    {
+    public function getDateInscription() {
         return $this->dateInscription;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->adresses = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -326,8 +303,7 @@ class User implements UserInterface
      * @param \AppBundle\Entity\Adresse $adresses
      * @return User
      */
-    public function addAdress(\AppBundle\Entity\Adresse $adresses)
-    {
+    public function addAdress(\AppBundle\Entity\Adresse $adresses) {
         $this->adresses[] = $adresses;
 
         return $this;
@@ -338,8 +314,7 @@ class User implements UserInterface
      *
      * @param \AppBundle\Entity\Adresse $adresses
      */
-    public function removeAdress(\AppBundle\Entity\Adresse $adresses)
-    {
+    public function removeAdress(\AppBundle\Entity\Adresse $adresses) {
         $this->adresses->removeElement($adresses);
     }
 
@@ -348,8 +323,7 @@ class User implements UserInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAdresses()
-    {
+    public function getAdresses() {
         return $this->adresses;
     }
 
@@ -359,8 +333,7 @@ class User implements UserInterface
      * @param \AppBundle\Entity\Fine $fines
      * @return User
      */
-    public function addFine(\AppBundle\Entity\Fine $fines)
-    {
+    public function addFine(\AppBundle\Entity\Fine $fines) {
         $this->fines[] = $fines;
 
         return $this;
@@ -371,8 +344,7 @@ class User implements UserInterface
      *
      * @param \AppBundle\Entity\Fine $fines
      */
-    public function removeFine(\AppBundle\Entity\Fine $fines)
-    {
+    public function removeFine(\AppBundle\Entity\Fine $fines) {
         $this->fines->removeElement($fines);
     }
 
@@ -381,8 +353,7 @@ class User implements UserInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getFines()
-    {
+    public function getFines() {
         return $this->fines;
     }
 
@@ -392,8 +363,7 @@ class User implements UserInterface
      * @param \AppBundle\Entity\Commande $commandes
      * @return User
      */
-    public function addCommande(\AppBundle\Entity\Commande $commandes)
-    {
+    public function addCommande(\AppBundle\Entity\Commande $commandes) {
         $this->commandes[] = $commandes;
 
         return $this;
@@ -404,8 +374,7 @@ class User implements UserInterface
      *
      * @param \AppBundle\Entity\Commande $commandes
      */
-    public function removeCommande(\AppBundle\Entity\Commande $commandes)
-    {
+    public function removeCommande(\AppBundle\Entity\Commande $commandes) {
         $this->commandes->removeElement($commandes);
     }
 
@@ -414,8 +383,7 @@ class User implements UserInterface
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCommandes()
-    {
+    public function getCommandes() {
         return $this->commandes;
     }
 
@@ -425,8 +393,7 @@ class User implements UserInterface
      * @param array $roles
      * @return User
      */
-    public function setRoles($roles)
-    {
+    public function setRoles($roles) {
         $this->roles = $roles;
 
         return $this;
@@ -437,16 +404,16 @@ class User implements UserInterface
      *
      * @return array 
      */
-    public function getRoles()
-    {
+    public function getRoles() {
         return $this->roles;
     }
 
     public function getUsername() {
-
+        return $this->email;
     }
 
     public function eraseCredentials() {
-
+        
     }
+
 }
