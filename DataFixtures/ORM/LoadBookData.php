@@ -6,10 +6,10 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Bdloc\AppBundle\Entity\Book;
-use Bdloc\AppBundle\Entity\Author;
-use Bdloc\AppBundle\Entity\Serie;
-use \DateTime;
+use AppBundle\Entity\Book;
+use AppBundle\Entity\Author;
+use AppBundle\Entity\Serie;
+use DateTime;
 
 class LoadBookData implements FixtureInterface, ContainerAwareInterface
 {
