@@ -259,3 +259,124 @@ fieldset label
 {
     margin-top:1em;
 }
+
+
+/*/////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE Informations perso///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
+
+
+#titre_compte 
+{
+    margin-top: 5%;
+}
+
+#info_perso
+{
+    margin-top:3em;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding:2%;
+}
+
+
+.label_info
+{
+    font-weight: bold;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE Choix du point relai///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
+
+#liste_deroul
+{
+    text-align: center;
+    margin-top: 30%;
+    margin-left: 10%;
+    width: 100%;
+    height: 4em;
+}
+
+.form-control
+{
+    width: 50%;
+    float: left;
+}
+
+#bt_valid
+{
+    float: left;
+}
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE Detail book///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
+/*titre de la BD*/
+#entete_detail
+{
+    width: 100%;
+    height: 2.5em;
+    border: 1px solid black;
+    border-bottom: 0px;
+    margin-top: 5em;
+    text-align:center;
+    border-radius:15px 15px 0 0;
+}
+
+.titre_BD
+{
+    float: left;
+    width:100%;
+    font-weight: bold;
+    font-size:150%;
+}
+
+
+/*Cadre Présentation*/
+#bloc_detail
+{
+    width: 100%;
+    height: 40em;
+    border: 1px solid black;
+    padding: 2%;
+    border-radius: 0 0 15px 15px;
+}
+
+    #img_detail
+    {
+        float: left;
+        width: 40%;
+        height: 95%;
+        margin-top:1.5%;
+
+    }
+
+    /*Détail de la BD*/
+    #book_detail
+    {
+        padding : 0 2% 0 2% ;
+        float: left;
+        width: 60%;
+    }
+
+    
+        .detail_BD
+        {
+        /*  float: left;*/
+            margin-top: 5%;
+        }
+
+        #page_prec
+        {
+            float: right;
+            margin-top: 30%;
+            color: black;
+         }
+
+        .bt_ajout
+        {
+           margin-top: 32.5%;
+        }
