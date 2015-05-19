@@ -3,13 +3,6 @@ body
     background: grey;
 }
 
-.container
-{
-    margin: 0px auto;
-    width:960px;
-    padding:2em;
-    color:white;
-}
 
 .bt_co
 {
@@ -31,4 +24,172 @@ body
 {
     color: #D8D8FF;
 }
+/*/////////////////////////////////////////////////////////////////////*/
+/*////////////////////////PAGE DE RECHERCHE///////////////////*/
+/*/////////////////////////////////////////////////////////////////////*/
+.container
+{
+    margin: 0px auto;
+    background: white;
+    width:960px;
+    padding:2em;
+}
 
+.titre
+{   
+    width: 15%;
+    float:left;
+    font-size: 300%;
+}
+
+header
+{
+/*    background: #F0F0F0;*/
+    width:100%; 
+}
+
+/*////// Menu entête ////////*/
+nav ul li
+{    
+    display: block; 
+    width:25%; 
+    float:left;
+    text-align:center;
+    border: 0.10em solid black;
+    margin-bottom: 0.3em;  
+}
+
+nav
+{
+    margin-top:1em;
+    float:left;  
+    width:60%;
+}
+
+#pseudo_deco
+{
+    float:right;
+    font-size: 80%;
+    margin-bottom: 0px;
+
+}
+
+#deco
+{   
+    float:right;
+    font-size: 80%;
+    margin-bottom: 2.25em;
+}
+
+/*/////// liste de checkbox //////*/
+#block_filtre
+{
+    float:left;
+    margin-top:5em;
+    width: 22%;
+}
+
+.entete
+{
+    font-weight: bold;
+}
+
+#block_filtre fieldset
+{
+    border:0.1em solid black;
+    padding : 1em;
+}
+
+#block_filtre fieldset legend
+{
+    font-size: 1em; 
+    width: 30%;
+    padding: 0em 0.5em;
+}
+
+fieldset label
+{
+    width:100%;
+}
+
+#dispo
+{
+    margin-top:15%;
+}
+
+#bt_filtre
+{
+    margin-top:1em;
+}
+
+/*////// Bloc représentant la liste des BDs /////////*/
+#block_all
+{
+    margin-top:7.7%;
+    width: 75%;
+    /*background : blue;*/
+    float:left;
+    margin-left:1em;
+}
+
+
+    /*////// liste déroulantes et pages //////*/
+    #block_all fieldset
+    {
+        border: 0.1em solid black;    
+    }
+
+    #block_all fieldset legend
+    {
+        width: 10%;
+        font-size: 100%; 
+        margin:0 0 0 10%;
+        padding: 0% 0.5%;
+    }
+
+    .liste_tri
+    {
+        float:left;
+        width : 25%;
+        margin:0 0 1% 3%;
+    }
+
+
+    /*/////// Chaque article représentant les BDs//////*/
+    .search_bd
+    {
+        margin:5% 0 0 2.5%;
+        border:0.1em solid black;
+        width: 45%;
+        height:230px;
+        float:left;
+        padding:2%;
+    }
+
+        .image_bd
+        {
+            height:100%;
+            width:50%;
+            float:left;
+        }
+
+        .detail_bd
+        {
+            width: 40%;
+            margin: 0 0 0 2%;
+            float:left;
+        }
+
+        .stock_bd
+        {
+            width: 40%;
+            margin: 15% 0 0 2%;
+            float:left;
+        }
+
+        .bt_detail
+        {
+            margin: 0 0 0 2%;
+            float:left;
+            width: 48%;
+        }

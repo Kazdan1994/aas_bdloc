@@ -10,7 +10,21 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-{% block body %}{% endblock %}
+    <div class="container">
+        <header>
+            <div class="titre">BdLoc</div>
+            <nav>
+                <ul class="nav nav-pills" id="menu">
+                    <li><a role="presentation" class="active" href="#" title="BDLOC | BD">Les BDs</a></li>
+                    <li><a role="presentation" class="active" href="#" title="BDLOC | Panier">Mon panier</a></li>
+                    <li><a role="presentation" class="active" href="#" title="BDLOC | Compte">Mon compte</a></li>
+                </ul>
+            </nav>
+
+            <p id="pseudo_deco">Bonjour machin</p></br>
+            <a id="deco" href="#" title="BDLOC | déconnexion">Déconnexion</a>
+        </header>
+    {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
 </html>
