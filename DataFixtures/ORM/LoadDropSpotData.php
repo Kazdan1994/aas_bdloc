@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Bdloc\AppBundle\Entity\DropSpot;
 use \DateTime;
+use AppBundle\Entity\PickUpSpot ;
 
 class LoadDropSpotDataData implements FixtureInterface, ContainerAwareInterface
 {
@@ -20,21 +21,31 @@ class LoadDropSpotDataData implements FixtureInterface, ContainerAwareInterface
         $dropspots = $this->getDropSpots();
 
 		//loop over the array
-		foreach($dropspots as $dropspot){
+		foreach($dropspots as $dropspot)
+		{
 
 			//creates a DropSpot instance
+			$pickup = new PickUpSpots();
 
-			//hydrates it
+			//hydrates it			
+			$nom =  $dropspot[0];
+			$adresse =  $dropspot[1];
+			$cp =  $dropspot[2];  
+			
+			$pickup->setNom($nom);
+			$pickup->setAdresse($adresse);
+			$pickup->setCp($cp);
 
 			//(gets the coordinates, optionnal)
 			//https://developers.google.com/maps/documentation/geocoding/
 
 			//persists it
-
+			$manager->persist($pickup);
 		}
 
 		//flush
-
+        $manager->persist($pickup);
+        $manager->flush();
     }
 
 
