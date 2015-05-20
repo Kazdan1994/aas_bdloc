@@ -1,6 +1,6 @@
 <?php
 
-namespace Bdloc\AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -51,8 +51,8 @@ class LoadBookData implements FixtureInterface, ContainerAwareInterface
 
     private function loadBooks(ObjectManager $manager){
 
-        $this->authorRepo = $this->container->get('doctrine')->getRepository("BdlocAppBundle:Author");
-        $this->serieRepo = $this->container->get('doctrine')->getRepository("BdlocAppBundle:Serie");
+        $this->authorRepo = $this->container->get('doctrine')->getRepository("AppBundle:Author");
+        $this->serieRepo = $this->container->get('doctrine')->getRepository("AppBundle:Serie");
 
         $fh = fopen($this->pathToData."albums.csv", "r");
         $num = 1;

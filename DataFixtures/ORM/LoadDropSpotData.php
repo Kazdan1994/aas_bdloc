@@ -1,16 +1,16 @@
 <?php
 
-namespace Bdloc\AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Bdloc\AppBundle\Entity\DropSpot;
-use \DateTime;
+use AppBundle\Entity\DropSpot;
+use DateTime;
 use AppBundle\Entity\PickUpSpot ;
 
-class LoadDropSpotDataData implements FixtureInterface, ContainerAwareInterface
+class LoadDropSpotDataData implements FixtureInterface
 {
 
 	/**

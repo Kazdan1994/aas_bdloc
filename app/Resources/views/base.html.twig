@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bdloc{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css"/>
@@ -21,7 +21,7 @@
                 </ul>
             </nav>
             {% if app.user and is_granted("ROLE_USER") %}
-            <p id="pseudo_deco">TODO : Bonjour machin</p></br>
+            <p id="pseudo_deco">TODO : Bonjour machin</p><br />
             <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
             {% endif %}
         </header>
