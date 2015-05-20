@@ -45,7 +45,9 @@
         {% for book in paginationResults.data %}
 
             <article class="search_bd">
-                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                    <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                </a>
                 <p class="detail_bd">
                     Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
                 </p>
@@ -54,7 +56,9 @@
 
                 <p class="stock_bd">TODO : Disponible</p>
 
-                <button class="btn btn-primary" data-value="{{ book.id }}" >Plus de détails !</button>
+                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                    <button class="btn btn-primary" data-value="{{ book.id }}" >Plus de détails !</button>
+                </a>
                 <button class="btn btn-success" data-value="{{ book.id }}" >Ajouter au panier !</button>
             </article>
         {% endfor %}
