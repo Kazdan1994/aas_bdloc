@@ -10,8 +10,7 @@ class BdController extends Controller
      * @Route("/liste_bd{page}",requirements={"page":"\d+"}, defaults={"page":1}, name="liste_bd")
      */
     public function listBdAction($page)
-    {
-         
+    {        
         
         //on récupére le repository de Book
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
@@ -20,15 +19,23 @@ class BdController extends Controller
         if (!$paginationResults) {
             throw $this->createNotFoundException();
         }
+
+        $categRepo = $this->get("doctrine")->getRepository("AppBundle:Categorie");
+
+        $CategoriesArray = $categRepo->findCategorie();
+
         //on va passer ces données à twig...
         $params = array(
-            "paginationResults" => $paginationResults
+            "paginationResults" => $paginationResults,
+            "categories"=> $CategoriesArray,
         );
+
         return $this->render('default/liste_bd.html.twig', $params);
         
     }
+
      /**
-     * @Route("/{slug}",requirements={"slug":"[a-z0-9-]+"}, name="details_bd")
+     * @Route("details/{slug}",requirements={"slug":"[a-z0-9-]+"}, name="details_bd")
      */
     public function detailsBdAction($slug, \Symfony\Component\HttpFoundation\Request $request)
     {
@@ -38,9 +45,10 @@ class BdController extends Controller
 
           $book = $storyRepo->findOneBySlug($slug);
         
-        if (!$book){
-			throw $this->createNotFoundException("Oupsie !");
-		}
+        if (!$book)
+        {
+			     throw $this->createNotFoundException("Oupsie !");
+		    }
                 
                 
         $params = array(

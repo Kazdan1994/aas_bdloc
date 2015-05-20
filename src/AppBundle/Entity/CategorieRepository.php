@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class categorieRepository extends EntityRepository
 {
+    public function findCategorie()
+    {
+        return $this->findAll();
+    }
 }
