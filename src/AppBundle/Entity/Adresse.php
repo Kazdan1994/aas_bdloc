@@ -31,7 +31,7 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="compAdresse", type="string", length=255, nullable=true)
+     * @ORM\Column(name="compAdresse", type="string", length=255)
      */
     private $compAdresse;
 

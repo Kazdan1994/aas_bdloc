@@ -25,7 +25,7 @@ class LoadDropSpotDataData implements FixtureInterface
 		{
 
 			//creates a DropSpot instance
-			$pickup = new PickUpSpot();
+			$pickup = new PickUpSpots();
 
 			//hydrates it			
 			$nom =  $dropspot[0];
@@ -35,7 +35,6 @@ class LoadDropSpotDataData implements FixtureInterface
 			$pickup->setNom($nom);
 			$pickup->setAdresse($adresse);
 			$pickup->setCp($cp);
-			$pickup->setVille("Paris");
 
 			//(gets the coordinates, optionnal)
 			//https://developers.google.com/maps/documentation/geocoding/
