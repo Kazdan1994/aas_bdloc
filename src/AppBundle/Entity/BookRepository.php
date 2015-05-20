@@ -31,7 +31,7 @@ class BookRepository extends EntityRepository
 			//->where('s.isPublished = 1');
 		//commun aux deux
 		$query = $qb->getQuery();
-		$numPerPage = 3;
+		$numPerPage = 10;
 		$query->setMaxResults($numPerPage);
 		$query->setFirstResult( ($page-1) * $numPerPage );
 		$result = $query->getResult();

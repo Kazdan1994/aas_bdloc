@@ -2,7 +2,15 @@ body
 {
     background: grey;
 }
-
+#container
+{
+    margin: 0px auto;
+    margin-top:2.5em;
+    background: white;
+    width:960px;
+    padding:2em;
+    border-radius: 15px;
+}
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE ACCUEIL/LOGIN///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
@@ -32,21 +40,12 @@ body
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE DE RECHERCHE///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
-.container
-{
-    margin: 0px auto;
-    margin-top:2.5em;
-    background: white;
-    width:960px;
-    padding:2em;
-    border-radius: 15px;
-}
 
 .titre
 {   
     width: 15%;
     float:left;
-    font-size: 300%;
+    font-size: 2.5em;
 }
 
 header
@@ -196,12 +195,6 @@ fieldset label
             float:left;
         }
 
-        .bt_detail
-        {
-            margin: 0 0 0 2%;
-            float:left;
-            width: 48%;
-        }
 
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE Panier///////////////////*/

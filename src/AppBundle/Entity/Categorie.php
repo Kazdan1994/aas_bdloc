@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Entity\categorieRepository")
  */
-class categorie
+class Categorie
 {
     /**
    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serie", cascade={"persist"}, mappedBy="categorie")

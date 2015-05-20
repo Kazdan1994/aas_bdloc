@@ -65,7 +65,7 @@
         {% for book in paginationResults.data %}
 
             <article class="search_bd">
-                <img class="image_bd" src="#" alt="#">
+                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="#">
                 <p class="detail_bd">
                     Titre : <a href="{{ path("liste_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
                 </p>
@@ -75,8 +75,8 @@
 
                 <p class="stock_bd">Indisponible</p>
 
-                <button class="bt_detail">Plus de détails !</button>
-                <button class="bt_detail">Ajouter au panier !</button>
+                <button class="btn btn-primary">Plus de détails !</button>
+                <button class="btn btn-success">Ajouter au panier !</button>
             </article>
         {% endfor %}
 
@@ -87,17 +87,17 @@
 
                 {% if paginationResults.prevPage %}
 
-                    <li><a href="{{ path('home', {page: paginationResults.prevPage}) }}">Préc</a></li>
+                    <li><a href="{{ path('liste_bd', {page: paginationResults.prevPage}) }}">Préc</a></li>
 
                 {% endif %}
 
                 {% for i in paginationResults.numLinkMin..paginationResults.numLinkMax %}
-                    <li><a href="{{ path('home', {'page' : i}) }}">{{i}}</a></li>
+                    <li><a href="{{ path('liste_bd', {'page' : i}) }}">{{i}}</a></li>
                     {% endfor %}
 
                 {% if paginationResults.nextPage %}
 
-                    <li><a href="{{ path('home', {page: paginationResults.nextPage}) }}">Suiv</a></li>
+                    <li><a href="{{ path('liste_bd', {page: paginationResults.nextPage}) }}">Suiv</a></li>
 
                 {% endif %}
 

@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BdController extends Controller
 {
      /**
-     * @Route("/liste_bd/{page}",requirements={"page":"\d+"}, defaults={"page":1}, name="liste_bd")
+     * @Route("/liste_bd{page}",requirements={"page":"\d+"}, defaults={"page":1}, name="liste_bd")
      */
     public function listBdAction($page)
     {
