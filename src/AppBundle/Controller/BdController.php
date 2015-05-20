@@ -27,4 +27,28 @@ class BdController extends Controller
         return $this->render('default/liste_bd.html.twig', $params);
         
     }
+     /**
+     * @Route("/{slug}",requirements={"slug":"[a-z0-9-]+"}, name="details_bd")
+     */
+    public function detailsBdAction($slug, \Symfony\Component\HttpFoundation\Request $request)
+    {
+              
+        //on récupére le repository de Book
+        $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
+
+          $book = $storyRepo->findOneBySlug($slug);
+        
+        if (!$book){
+			throw $this->createNotFoundException("Oupsie !");
+		}
+                
+                
+        $params = array(
+            'book' => $book,
+        );
+        return $this->render('default/details_bd.html.twig', $params);
+        
+    }
 }
+ 
+     

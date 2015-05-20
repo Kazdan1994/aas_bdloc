@@ -65,15 +65,14 @@
         {% for book in paginationResults.data %}
 
             <article class="search_bd">
-                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="#">
+                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
                 <p class="detail_bd">
-                    Titre : <a href="{{ path("liste_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
+                    Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
                 </p>
-                <p class="detail_bd">Auteur : </p>
-                <p class="detail_bd">Nombre de pages : {{ book.nbPage }}</p>
+                <p class="detail_bd">Auteur : {{ book.author.nom }}</p>
                 <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
 
-                <p class="stock_bd">Indisponible</p>
+                <p class="stock_bd">TODO : Disponible</p>
 
                 <button class="btn btn-primary">Plus de détails !</button>
                 <button class="btn btn-success">Ajouter au panier !</button>
