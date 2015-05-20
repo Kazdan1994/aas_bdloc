@@ -87,4 +87,11 @@ class UserController extends Controller {
     public function logoutAction() {
         
     }
+
+    /**
+     * @Route("/utilisateur/compte", name="compte_user")
+     */
+    public function compteUser () {
+        return $this->render("default/compte_user.html.twig");
+    }
 }
