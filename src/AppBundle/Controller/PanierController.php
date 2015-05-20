@@ -23,14 +23,4 @@ class PanierController extends Controller
     }
 }
 
-        // {% for comment in story.comments %}    
-        //     <tr>
-        //         <article class="article_panier">
-        //         <img alt="article" src="#" class="image_article"/>
-        //         <p class="titre_article">Titre de la bédé 1</p>
-        //         <button class="glyphicon glyphicon-remove-circle bt_suppr"></button>
-        //         <p class="sup_article">Retirer du panier</p>
-        //         </article>
-        //     </tr>
-            
-        // {% endfor %} 
+        
