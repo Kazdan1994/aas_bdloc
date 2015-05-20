@@ -19,8 +19,12 @@ class UserType extends AbstractType
             ->add('nom')
             ->add('prenom', 'text', array('label' => 'Prénom'))
             ->add('email', 'email', array('label' => 'Adresse mail'))
-            ->add('password', 'repeated', array('first_options'  => array('label' => 'Mot de passe'),
-                                                'second_options' => array('label' => 'Mot de passe (validation)')))
+            ->add('password', 'repeated', array(
+                                'type' => 'password',
+                                'invalid_message' => 'Les mots de passe doivent correspondre',
+                                'options' => array('required' => true),
+                                'first_options'  => array('label' => 'Mot de passe'),
+                                'second_options' => array('label' => 'Mot de passe (validation)')))
             ->add('telephone', 'text', array('label' => 'Numéro de téléphone'))
             ->add('S\'enregistrer', 'submit')
         ;
