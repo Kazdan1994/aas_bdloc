@@ -20,10 +20,19 @@
                     <li><a role="presentation" class="" href="#" title="BDLOC | Compte">Mon compte</a></li>
                 </ul>
             </nav>
+<<<<<<< Updated upstream
             {% if app.user and is_granted("ROLE_USER") %}
             <p id="pseudo_deco">TODO : Bonjour machin</p><br />
             <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
             {% endif %}
+=======
+            <div style="float: left;">
+                {% if app.user and is_granted("ROLE_USER") %}
+                    <p id="pseudo_deco">Bonjour {{ app.user.nom }}</p></br>
+                    <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
+                {% endif %}
+            </div>
+>>>>>>> Stashed changes
         </header>
     {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}

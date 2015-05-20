@@ -6,7 +6,6 @@
             <fieldset>
                 <legend> Filtres </legend>
                 <p class="entete"> Catégories </p>
-
                 <label>
                     <input type="checkbox"> polar
                 </label>
@@ -25,7 +24,6 @@
                 <label>
                     <input type="checkbox"> polar5
                 </label>
-
 
                 <p class="entete" id="dispo"> Disponibilités: </p>
                 <label>
@@ -61,33 +59,50 @@
             </fieldset>
         </form>
 
-        <article class="search_bd">
-            <img class="image_bd" src="#" alt="#">
-            <p class="detail_bd">Titre de la bédé</p>
-            <p class="detail_bd">Auteur</p>
-            <p class="detail_bd">Coloriste</p>
-            <p class="detail_bd">Scénariste</p>
-
-            <p class="stock_bd">3 en stock !</p>
-
-            <button class="bt_detail">Plus de détails !</button>
-            <button class="bt_detail">Ajouter au panier !</button>
-        </article>
-
-        <article class="search_bd">
-            <img class="image_bd" src="#" alt="#">
-            <p class="detail_bd">Titre de la bédé</p>
-            <p class="detail_bd">Auteur</p>
-            <p class="detail_bd">Coloriste</p>
-            <p class="detail_bd">Scénariste</p>
-
-            <p class="stock_bd">Indisponible</p>
-
-            <button class="bt_detail">Plus de détails !</button>
-            <button class="bt_detail">Ajouter au panier !</button>
-        </article>
-
     </div>
 
+    <div id="liste_bd" >
+        {% for book in paginationResults.data %}
+
+            <article class="search_bd">
+                <img class="image_bd" src="#" alt="#">
+                <p class="detail_bd">
+                    Titre : <a href="{{ path("liste_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
+                </p>
+                <p class="detail_bd">Auteur : </p>
+                <p class="detail_bd">Nombre de pages : {{ book.nbPage }}</p>
+                <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
+
+                <p class="stock_bd">Indisponible</p>
+
+                <button class="bt_detail">Plus de détails !</button>
+                <button class="bt_detail">Ajouter au panier !</button>
+            </article>
+        {% endfor %}
+
+        <div style="clear: both;">
+            {{ paginationResults.nowShowingMin }} à {{ paginationResults.nowShowingMax }} sur {{ paginationResults.total }}
+
+            <ul class="pagination">
+
+                {% if paginationResults.prevPage %}
+
+                    <li><a href="{{ path('home', {page: paginationResults.prevPage}) }}">Préc</a></li>
+
+                {% endif %}
+
+                {% for i in paginationResults.numLinkMin..paginationResults.numLinkMax %}
+                    <li><a href="{{ path('home', {'page' : i}) }}">{{i}}</a></li>
+                    {% endfor %}
+
+                {% if paginationResults.nextPage %}
+
+                    <li><a href="{{ path('home', {page: paginationResults.nextPage}) }}">Suiv</a></li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 

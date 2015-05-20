@@ -59,9 +59,9 @@ header
 /*////// Menu entête ////////*/
 nav ul li
 {    
-    display: block; 
+    display: inline; 
     width:25%; 
-    float:left;
+
     text-align:center;
     border: 0.10em solid black;
     margin-bottom: 0.3em;  
@@ -95,7 +95,7 @@ nav
 {
     float:left;
     margin-top:5em;
-    width: 22%;
+    width: 20%;
 }
 
 .entete
