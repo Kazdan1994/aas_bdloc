@@ -31,35 +31,35 @@ class Author
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
     private $prenom;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth", type="datetime")
+     * @ORM\Column(name="birth", type="datetime", nullable=true)
      */
     private $birth;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="death", type="datetime")
+     * @ORM\Column(name="death", type="datetime",  nullable=true)
      */
     private $death;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pays", type="string", length=100)
+     * @ORM\Column(name="pays", type="string", length=100, nullable=true)
      */
     private $pays;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=255)
+     * @ORM\Column(name="pseudo", type="string", length=255, nullable=true)
      */
     private $pseudo;
 
@@ -84,6 +84,19 @@ class Author
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**

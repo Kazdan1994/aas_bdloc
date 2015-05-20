@@ -24,7 +24,7 @@ class Book
     /**
      * @var integer
      *
-     * @ORM\Column(name="numVolume", type="integer")
+     * @ORM\Column(name="numVolume", type="integer", nullable=true)
      */
     private $numVolume;
 
@@ -38,35 +38,35 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="editeur", type="string", length=255)
+     * @ORM\Column(name="editeur", type="string", length=255,  nullable=true)
      */
     private $editeur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=45)
+     * @ORM\Column(name="reference", type="string", length=45, nullable=true)
      */
     private $reference;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="couverture", type="string", length=255)
+     * @ORM\Column(name="couverture", type="string", length=255,  nullable=true)
      */
     private $couverture;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbPage", type="integer")
+     * @ORM\Column(name="nbPage", type="integer", nullable=true)
      */
     private $nbPage;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="stock", type="integer")
+     * @ORM\Column(name="stock", type="integer", nullable=true)
      */
     private $stock;
 
@@ -98,6 +98,19 @@ class Book
     public function getId()
     {
         return $this->id;
+    }
+
+        /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
