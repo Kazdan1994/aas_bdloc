@@ -6,32 +6,12 @@
             <fieldset>
                 <legend> Filtres </legend>
                 <p class="entete"> Catégories </p>
-                <label>
-                    <input type="checkbox"> polar
-                </label>
-                <label>
-                    <input type="checkbox"> polar1
-                </label>
-                <label>
-                    <input type="checkbox"> polar2
-                </label>
-                <label>
-                    <input type="checkbox"> polar3
-                </label>
-                <label>
-                    <input type="checkbox"> polar4
-                </label>
-                <label>
-                    <input type="checkbox"> polar5
-                </label>
 
-                <p class="entete" id="dispo"> Disponibilités: </p>
-                <label>
-                    <input type="checkbox"> Disponible
-                </label>
-                <label>
-                    <input type="checkbox"> Indisponible
-                </label>
+                {% for categorie in categories %}
+                    <label>
+                        <input type="checkbox"> {{categorie.nomCat}}
+                    </label>                    
+                {% endfor %}
 
                 <label for="search"></label>
                 <input type="text" name="search" placeholder="mots-clés"></input>
@@ -65,7 +45,9 @@
         {% for book in paginationResults.data %}
 
             <article class="search_bd">
-                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                    <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                </a>
                 <p class="detail_bd">
                     Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
                 </p>
@@ -74,8 +56,10 @@
 
                 <p class="stock_bd">TODO : Disponible</p>
 
-                <button class="btn btn-primary">Plus de détails !</button>
-                <button class="btn btn-success">Ajouter au panier !</button>
+                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                    <button class="btn btn-primary" data-value="{{ book.id }}" >Plus de détails !</button>
+                </a>
+                <button class="btn btn-success" data-value="{{ book.id }}" >Ajouter au panier !</button>
             </article>
         {% endfor %}
 

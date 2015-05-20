@@ -1,5 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   
+    <div id="entete_detail">
+        <p class="titre_BD">Titre de La BD : {{ book.titre }}</p>
+    </div>
+
+    <article id="bloc_detail">                   
+
+        <img id="img_detail" alt="Couverture de la BD" src="{{app.request.basepath}}/img/{{book.couverture}}" />
+
+        <div id="book_detail">
+            <p class="detail_BD">
+                Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
+            </p>                       
+            <p class="detail_BD">Série : {{ book.numVolume }}</p>
+
+            <p class="detail_BD">Numéro de l'ouvrage dans la série : {{ book.serie.titre }}</p>
+
+            <p class="detail_BD">Auteur : {{ book.author.nom }}<a href="#" title="BDLOC | Détail sur l'auteur" id="author_link"></a></p>
+
+            <p class="detail_BD">Editeur : {{ book.editeur }}</p>
+
+            <p class="detail_BD">Référence : {{ book.reference }}</p>
+
+            <p class="detail_BD">Nombre de Pages : {{ book.nbPage }}</p>
+
+            <p class="detail_BD">Stock : {{ book.stock }}</p>
+
+            <a href="{{ path("home") }}" title="BDLOC | Page précédente" id="page_prec">Revenir à la page précédente</a>
+
+            <button class="btn btn-primary bt_detail">Ajouter au panier !</button>
+
+    </article>
 {% endblock %}
