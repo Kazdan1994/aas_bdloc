@@ -57,7 +57,24 @@
                 <p class="stock_bd">TODO : Disponible</p>
 
                 <a href="{{ path("details_bd", {"slug":book.slug}) }}">
-                    <button class="btn btn-primary" data-value="{{ book.id }}" >Plus de détails !</button>
+
+
+
+
+                            {# en cours #}
+
+
+
+                    <button class="btn btn-primary" data-value="{{ path("ajoutPanier/"~book.id )}}" >Plus de détails !</button>
+
+
+
+
+
+
+
+
+
                 </a>
                 <button class="btn btn-success" data-value="{{ book.id }}" >Ajouter au panier !</button>
             </article>
