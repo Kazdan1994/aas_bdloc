@@ -6,32 +6,12 @@
             <fieldset>
                 <legend> Filtres </legend>
                 <p class="entete"> Catégories </p>
-                <label>
-                    <input type="checkbox"> polar
-                </label>
-                <label>
-                    <input type="checkbox"> polar1
-                </label>
-                <label>
-                    <input type="checkbox"> polar2
-                </label>
-                <label>
-                    <input type="checkbox"> polar3
-                </label>
-                <label>
-                    <input type="checkbox"> polar4
-                </label>
-                <label>
-                    <input type="checkbox"> polar5
-                </label>
 
-                <p class="entete" id="dispo"> Disponibilités: </p>
-                <label>
-                    <input type="checkbox"> Disponible
-                </label>
-                <label>
-                    <input type="checkbox"> Indisponible
-                </label>
+                {% for categorie in categories %}
+                    <label>
+                        <input type="checkbox"> {{categorie.nomCat}}
+                    </label>                    
+                {% endfor %}
 
                 <label for="search"></label>
                 <input type="text" name="search" placeholder="mots-clés"></input>
