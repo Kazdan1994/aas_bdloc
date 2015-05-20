@@ -2,11 +2,13 @@
 
 {% block body %}
     <div class="container">
-        <h2 class="form-signin-heading">Bonjour et Bienvenue sur notre site de Location de BD</h2>
+        <div id="header_login">
+        <h2 id="h2_message_de_bienvenue">Bonjour et Bienvenue sur notre site de Location de BD</h2>
         <p>
             Sur ce site vous aurez la possibilité de louer vos BDs 
             à prix réduit* grâce à la mairie de Paris.
         </p>
+
         {% if error %}
             <div>{{ error.messageKey|trans(error.messageData) }}</div>
         {% endif %}
@@ -31,5 +33,6 @@
             Pour les résidents de tout autre ville un abonnement d'un montant de 1250€ par mois sera demandé. 
             © Copyright 2015 - 2025 BDLOC SARL Tous droits réservés.
         </p>
+        </div>
     </div><!-- .container -->
 {% endblock %}

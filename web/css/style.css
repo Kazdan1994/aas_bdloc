@@ -11,9 +11,18 @@ body
     padding:2em;
     border-radius: 15px;
 }
+
+#logo {
+    float: left;
+}
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE ACCUEIL/LOGIN///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
+
+#header_login
+{
+    float: left;
+}
 
 .bt_co
 {
@@ -36,16 +45,14 @@ body
     color: #D8D8FF;
 }
 
-
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE DE RECHERCHE///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
 
-.titre
-{   
-    width: 15%;
-    float:left;
-    font-size: 2.5em;
+#logo
+{
+    margin: 5px;
+    width: 100%;
 }
 
 header
@@ -58,9 +65,8 @@ header
 /*////// Menu entête ////////*/
 nav ul li
 {    
-    display: inline; 
-    width:25%; 
-
+    display: inline;
+    width:25%;
     text-align:center;
     border: 0.10em solid black;
     margin-bottom: 0.3em;  
@@ -68,8 +74,7 @@ nav ul li
 
 nav
 {
-    margin-top:1em;
-    float:left;  
+    float:left;
     width:60%;
 }
 
