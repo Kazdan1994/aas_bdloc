@@ -2,11 +2,6 @@
 
 {% block body %}
 
-    {% if app.user and is_granted("ROLE_USER") %}
-        <p id="pseudo_deco">Bonjour {{ app.user.nom }}</p><br />
-        <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
 
-        <h1>Voici vos informations de compte</h1>
-    {% endif %}
 
 {% endblock %}
