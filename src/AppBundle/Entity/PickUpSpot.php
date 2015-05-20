@@ -35,12 +35,6 @@ class PickUpSpot
      */
     private $adresse;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="compAdresse", type="string", length=255)
-     */
-    private $compAdresse;
 
     /**
      * @var string
@@ -56,21 +50,7 @@ class PickUpSpot
      */
     private $ville;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="comment", type="text")
-     */
-    private $comment;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="horaire", type="string", length=255)
-     */
-    private $horaire;
-
-    /**
+     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="pickUpSpot")
      */
