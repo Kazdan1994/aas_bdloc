@@ -34,6 +34,12 @@ class Serie
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Book", mappedBy="serie")
      */
     private $books;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categorie", cascade={"persist"}, inversedBy="series")
+     */
+     private $categorie;
+
     
 
     /**
@@ -147,4 +153,37 @@ class Serie
     }
 
 
+
+    /**
+     * Add categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     * @return Serie
+     */
+    public function addCategorie(\AppBundle\Entity\Categorie $categorie)
+    {
+        $this->categorie[] = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     */
+    public function removeCategorie(\AppBundle\Entity\Categorie $categorie)
+    {
+        $this->categorie->removeElement($categorie);
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
 }

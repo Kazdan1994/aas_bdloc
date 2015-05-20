@@ -89,10 +89,6 @@ class Book
      */
     private $author;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categorie", cascade={"persist"})
-     */
-  private $categorie;
 
     
     /**

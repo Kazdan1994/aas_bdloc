@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class categorie
 {
     /**
-   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", cascade={"persist"}, inversedBy="categorie")
+   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serie", cascade={"persist"}, mappedBy="categorie")
    */
-  private $books;
+  private $series;
     /**
      * @var integer
      *
@@ -100,39 +100,39 @@ class categorie
      */
     public function __construct()
     {
-        $this->books = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->series = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add books
+     * Add series
      *
-     * @param \AppBundle\Entity\Book $books
+     * @param \AppBundle\Entity\Serie $series
      * @return categorie
      */
-    public function addBook(\AppBundle\Entity\Book $books)
+    public function addSeries(\AppBundle\Entity\Serie $series)
     {
-        $this->books[] = $books;
+        $this->series[] = $series;
 
         return $this;
     }
 
     /**
-     * Remove books
+     * Remove series
      *
-     * @param \AppBundle\Entity\Book $books
+     * @param \AppBundle\Entity\Serie $series
      */
-    public function removeBook(\AppBundle\Entity\Book $books)
+    public function removeSeries(\AppBundle\Entity\Serie $series)
     {
-        $this->books->removeElement($books);
+        $this->series->removeElement($series);
     }
 
     /**
-     * Get books
+     * Get series
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getBooks()
+    public function getSeries()
     {
-        return $this->books;
+        return $this->series;
     }
 }

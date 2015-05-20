@@ -34,6 +34,12 @@ class Serie
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Book", mappedBy="serie")
      */
     private $books;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categorie", cascade={"persist"}, mappedBy="series")
+     */
+     private $categorie;
+
     
 
     /**
