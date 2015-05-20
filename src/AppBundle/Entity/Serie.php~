@@ -28,18 +28,13 @@ class Serie
      */
     private $titre;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="comment", type="text")
-     */
-    private $comment;
 
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Book", mappedBy="serie")
      */
     private $books;
+    
 
     /**
      * Get id
@@ -50,6 +45,20 @@ class Serie
     {
         return $this->id;
     }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
     /**
      * Set titre
@@ -96,4 +105,46 @@ class Serie
     {
         return $this->comment;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->books = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add books
+     *
+     * @param \AppBundle\Entity\Book $books
+     * @return Serie
+     */
+    public function addBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books[] = $books;
+
+        return $this;
+    }
+
+    /**
+     * Remove books
+     *
+     * @param \AppBundle\Entity\Book $books
+     */
+    public function removeBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books->removeElement($books);
+    }
+
+    /**
+     * Get books
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+
 }

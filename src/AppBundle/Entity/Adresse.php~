@@ -31,7 +31,7 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="compAdresse", type="string", length=255)
+     * @ORM\Column(name="compAdresse", type="string", length=255, nullable=true)
      */
     private $compAdresse;
 
@@ -56,9 +56,6 @@ class Adresse
      */
     protected $user;
 
-
-    
-    
     /**
      * Get id
      *
@@ -159,5 +156,28 @@ class Adresse
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Adresse
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

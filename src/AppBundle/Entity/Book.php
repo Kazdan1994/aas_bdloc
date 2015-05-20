@@ -89,6 +89,11 @@ class Book
      */
     private $author;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categorie", cascade={"persist"}, mappedBy="books")
+     */
+  private $categorie;
+
     
     /**
      * Get id
@@ -341,5 +346,45 @@ class Book
     public function getAuthor()
     {
         return $this->author;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categorie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     * @return Book
+     */
+    public function addCategorie(\AppBundle\Entity\Categorie $categorie)
+    {
+        $this->categorie[] = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     */
+    public function removeCategorie(\AppBundle\Entity\Categorie $categorie)
+    {
+        $this->categorie->removeElement($categorie);
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

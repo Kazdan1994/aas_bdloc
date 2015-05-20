@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class categorie
 {
     /**
-   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", cascade={"persist"})
+   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Book", cascade={"persist"}, inversedBy="categorie")
    */
   private $books;
     /**
@@ -94,5 +94,45 @@ class categorie
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->books = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add books
+     *
+     * @param \AppBundle\Entity\Book $books
+     * @return categorie
+     */
+    public function addBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books[] = $books;
+
+        return $this;
+    }
+
+    /**
+     * Remove books
+     *
+     * @param \AppBundle\Entity\Book $books
+     */
+    public function removeBook(\AppBundle\Entity\Book $books)
+    {
+        $this->books->removeElement($books);
+    }
+
+    /**
+     * Get books
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBooks()
+    {
+        return $this->books;
     }
 }
