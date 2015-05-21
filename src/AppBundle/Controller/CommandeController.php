@@ -50,6 +50,11 @@ class CommandeController extends Controller
         if(!$com->hasbook($book)) 
         {
             $com->addBook($book);
+
+            $stock = $book->getStock();
+            $book->setStock($stock-1);
+            persist($book);
+
         }
         else
         {
