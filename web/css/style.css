@@ -7,7 +7,7 @@ body
     margin: 0px auto;
     margin-top:2.5em;
     background: white;
-    width:960px;
+    max-width:960px;
     padding:20px;
     border-radius: 0px;
 }
@@ -18,52 +18,68 @@ body
     display: inline;
 }
 
-
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE ACCUEIL/LOGIN///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
 
-#header_login
-{
-    float: left;
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
-.bt_co
-{
-    margin-top:5%;
-}
+
 
 #ptite_ligne
 {
-    font-size: 70%;
-    margin-top: 5%;
+    font-size: 0.7em;
+    margin-top: 15px;
 }
 
 #register
 {
-    font-size: 85%;
+    font-size: 1.2em;
 }
 
 #register a
 {
-    color: #D8D8FF;
+    color: #08C;
 }
 
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE DE RECHERCHE + Liste des BD ///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
 
-#logo
-{
-    margin: 5px;
-    width: 100%;
-}
 
-header
-{
-/*    background: #F0F0F0;*/
-    width:100%; 
-}
 
 
 
@@ -287,16 +303,6 @@ fieldset label
     height: 4em;
 }
 
-.form-control
-{
-    width: 50%;
-    float: left;
-}
-
-#bt_valid
-{
-    float: left;
-}
 
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -367,4 +373,13 @@ fieldset label
         .bt_ajout
         {
            margin-top: 32.5%;
+        }
+        footer{
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            max-width:960px;
+            background: white;
+            text-align: center;
+            padding: 15px 0px;
         }

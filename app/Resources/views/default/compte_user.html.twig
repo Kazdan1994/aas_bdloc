@@ -2,13 +2,23 @@
 
 {% block body %}
 
-    {% if app.user and is_granted("ROLE_USER") %}
-        <p id="pseudo_deco">Bonjour {{ app.user.nom }}</p><br />
-        <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
-    {% endif %}
+        <h2 id="titre_compte">Voici vos informations personnelles : </h2>
 
-    <h1>Voici vos informations de compte</h1>
-
-    <p>Nom : {{ app.user.nom }}</p>
+        <div id="info_perso">
+            <p><span class="label_info">Nom :</span> {{ app.user.nom }}</p>
+            <p><span class="label_info">Prenom :</span> {{ app.user.prenom }}</p>
+            <p><span class="label_info">Email :</span> {{ app.user.email }}</p>
+            <p><span class="label_info">Mot de passe :</span> {{ app.user.password }}</p>
+            <p><span class="label_info">Téléphone :</span> {{ app.user.telephone }}</p>
+            <p><span class="label_info">Date d'inscription :</span> {{ app.user.dateInscription|date('d-m-Y') }}</p>
+            <p><span class="label_info">Adresses :</span>
+                {% for adresse in app.user.adresses %}
+                    <br />
+                    {{ adresse.compAdresse }}
+                    {{ adresse.cp }}
+                    {{ adresse.ville }}
+                    {% endfor %}
+            </p>
+        </div>
 
 {% endblock %}

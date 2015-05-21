@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div id="header_login">
+    <div>
         <h2 id="h2_message_de_bienvenue">Bonjour et Bienvenue sur notre site de Location de BD</h2>
         <p>
             Sur ce site vous aurez la possibilité de louer vos BDs 
@@ -19,20 +18,17 @@
             <input type="email" id="inputEmail" class="form-control" name="_username" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" name="_password" placeholder="Password" required>
-
-            <p id="register">
-                Si vous n'êtes pas déjà membre, vous pouvez cliquer sur ce lien pour vous enregistrer :
-                <a href="{{ path('register_user') }}" title="Bdloc | Register "> S'enregistrer</a>
-            </p>
-
-            <button class="btn btn-lg btn-primary btn-block bt_co" type="submit">Connexion</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
         </form>
+        <p id="register">
+            Si vous n'êtes pas déjà membre, vous pouvez cliquer sur ce lien pour vous enregistrer :
+            <a href="{{ path('register_user') }}" title="Bdloc | Register "> S'enregistrer</a>
+        </p>
 
         <p id="ptite_ligne">
             *Offre réservée aux citoyens résidents de la ville de Paris. 
             Pour les résidents de tout autre ville un abonnement d'un montant de 1250€ par mois sera demandé. 
-            © Copyright 2015 - 2025 BDLOC SARL Tous droits réservés.
+            
         </p>
-        </div>
-    </div><!-- .container -->
+    </div>
 {% endblock %}
