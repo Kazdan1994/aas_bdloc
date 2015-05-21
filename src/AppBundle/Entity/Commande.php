@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Book;
 
 /**
  * Commande
@@ -27,11 +28,11 @@ class Commande {
     private $id;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="montant", type="float", nullable=true)
+     * @ORM\Column(name="statut", type="string")
      */
-    private $montant;
+    private $statut;
 
     /**
      * @var \DateTime
@@ -184,5 +185,43 @@ class Commande {
     public function getBooks()
     {
         return $this->books;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Commande
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    public function hasbook(Book $book)
+    {
+        foreach($this->books as $bd)
+        {
+            if($bd->getId() == $book->getId())
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 }

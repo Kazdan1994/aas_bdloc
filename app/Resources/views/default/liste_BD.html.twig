@@ -59,24 +59,12 @@
                 <a href="{{ path("details_bd", {"slug":book.slug}) }}">
 
 
-
-
-                            {# en cours #}
-
-
-
-                    <button class="btn btn-primary" data-value="{{ path("ajoutPanier", {id:book.id} )}}" >Plus de détails !</button>
-
-
-
-
-
-
-
-
+                <button class="btn btn-primary" data-value="{{ path("ajoutPanier", {id:book.id} )}}" >Plus de détails !</button>
 
                 </a>
-                <button class="btn btn-success" data-value="{{ book.id }}" >Ajouter au panier !</button>
+
+                <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >Ajouter au panier ! {{ path("ajoutPanier", {id:book.id} )}} </button>
+
             </article>
         {% endfor %}
 

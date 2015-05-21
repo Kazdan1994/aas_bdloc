@@ -5,15 +5,15 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * categorie
+ * Categorie
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\categorieRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\CategorieRepository")
  */
-class categorie
+class Categorie
 {
     /**
-   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serie", cascade={"persist"}, inversedBy="categorie")
+   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serie", cascade={"persist"}, mappedBy="categorie")
    */
   private $series;
     /**
@@ -94,5 +94,45 @@ class categorie
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->series = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add series
+     *
+     * @param \AppBundle\Entity\Serie $series
+     * @return categorie
+     */
+    public function addSeries(\AppBundle\Entity\Serie $series)
+    {
+        $this->series[] = $series;
+
+        return $this;
+    }
+
+    /**
+     * Remove series
+     *
+     * @param \AppBundle\Entity\Serie $series
+     */
+    public function removeSeries(\AppBundle\Entity\Serie $series)
+    {
+        $this->series->removeElement($series);
+    }
+
+    /**
+     * Get series
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSeries()
+    {
+        return $this->series;
     }
 }
