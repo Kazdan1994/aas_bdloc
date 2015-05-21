@@ -53,7 +53,7 @@ class CommandeController extends Controller
 
             $stock = $book->getStock();
             $book->setStock($stock-1);
-            persist($book);
+            $manager->persist($book);
 
         }
         else
