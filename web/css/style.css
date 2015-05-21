@@ -87,17 +87,9 @@ body
 #pseudo_deco
 {
     float:right;
-    font-size: 80%;
-    margin-bottom: 0px;
-
+    font-size: 1em;
 }
 
-#deco
-{   
-    float:right;
-    font-size: 80%;
-    margin-bottom: 2.25em;
-}
 
 
 /*/////// liste de checkbox //////*/
@@ -373,6 +365,15 @@ fieldset label
         .bt_ajout
         {
            margin-top: 32.5%;
+        }
+        /* ---- logo ----- */
+        .text-muted{
+            display: inline; 
+            font-family: 'Indie Flower', cursive;
+            font-size: 2.5em;
+            font-style: oblique;
+            line-height: 70px;
+            color: #08C;
         }
         footer{
             margin: 0 auto;
