@@ -51,6 +51,11 @@ class CommandeController extends Controller
         {
             $com->addBook($book);
         }
+        else
+        {
+            var_dump("Vous ne pouvez ajouter 2x le même livre dans votre commande");
+
+        }
 
         $com->setStatut("en_cours");
 

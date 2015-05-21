@@ -210,18 +210,16 @@ class Commande {
         return $this->statut;
     }
 
+//fonction permettant de checker si le book cliqué est déjà présent dans une commande 
     public function hasbook(Book $book)
     {
-        foreach($this->books as $bd)
+        foreach($this->books as $bd)// pour chaque book dans la commande
         {
-            if($bd->getId() == $book->getId())
+            if($bd->getId() == $book->getId()) //on compare leurs id
             {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
+                return true; // on renvoie true car on a trouvé le livre
+            }           
         }
+        return false; // renvoie false s'il n'a pas trouvé la ligne
     }
 }
