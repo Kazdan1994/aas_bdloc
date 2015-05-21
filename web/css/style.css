@@ -10,6 +10,7 @@ body
     max-width:960px;
     padding:20px;
     border-radius: 0px;
+    overflow: hidden;/* Empêche le dépassement des flottants. */
 }
 header{
     margin-bottom: 40px;
@@ -152,6 +153,8 @@ fieldset label
 #liste_bd{
     width: 700px;
     float: left;
+    margin-left: 20px;
+    box-sizing: border-box;
     
 }
 
@@ -160,12 +163,16 @@ fieldset label
     color: white;
     font-size: 1.3em;
     padding: 5px 10px;
+    height: 100px;
 }
 
 .table_bd
 {
-    height:280px;
+    width: 350px;
+    box-sizing: border-box;
+    height:500px;
     float:left;
+    margin-top: 10px;
 }
 
 .image_bd

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <aside id="block_filtre">
+    <aside id="block_filtre" class="">
         <form method="get">
             <fieldset>
                 <legend> Filtres </legend>
@@ -19,83 +19,84 @@
             </fieldset>
         </form>
     </aside>
+    <div>
+        <div id="block_resultat">
+            <form>
+                <div class="form-group">
+                    <fieldset>
+                        <legend> Resultats </legend>
+                        <select class="form-control input-sm liste_tri">
+                            <option value="value1" selected>Trier par...</option> 
+                            <option value="value2" >Valeur 2</option>
+                            <option value="value3">Valeur 3</option>
+                        </select>
+                        <select class="form-control input-sm liste_tri">
+                            <option value="value1" >afficher 5 résultats</option> 
+                            <option value="value2" >afficher 10 résultats</option>
+                            <option value="value3" selected>afficher 20 résultats</option>
+                        </select>        
+                    </fieldset>
+                </div>
+            </form>
+        </div>
 
-    <div id="block_resultat">
-        <form>
-            <div class="form-group">
-                <fieldset>
-                    <legend> Resultats </legend>
-                    <select class="form-control input-sm liste_tri">
-                        <option value="value1" selected>Trier par...</option> 
-                        <option value="value2" >Valeur 2</option>
-                        <option value="value3">Valeur 3</option>
-                    </select>
-                    <select class="form-control input-sm liste_tri">
-                        <option value="value1" >afficher 5 résultats</option> 
-                        <option value="value2" >afficher 10 résultats</option>
-                        <option value="value3" selected>afficher 20 résultats</option>
-                    </select>        
-                </fieldset>
+        <div id="liste_bd">
+            {% for book in paginationResults.data %}
+
+                <table class="table_bd">
+                    <tr class="head-div-book">
+                        <td>
+                            <h3>{{ book.titre }}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                                <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                            </a>
+                            <p class="detail_bd">
+                                Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
+                            </p> 
+                            <p class="detail_bd">Auteur : {{ book.author.nom }}</p>
+                            <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
+                            <p class="stock_bd" data-value="{{book.id}}">Stock : {{ book.stock }}</p>
+
+                            <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+
+
+                                <button class="btn btn-primary" data-value="{{ path("ajoutPanier", {id:book.id} )}}" >Plus de détails !</button>
+
+                            </a>
+
+                            <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >Ajouter au panier !</button>
+                        </td>
+                    </tr>
+                </table>
+            {% endfor %}
+
+            <div>
+                {{ paginationResults.nowShowingMin }} à {{ paginationResults.nowShowingMax }} sur {{ paginationResults.total }}
+
+                <ul class="pagination">
+
+                    {% if paginationResults.prevPage %}
+
+                        <li><a href="{{ path('liste_bd', {page: paginationResults.prevPage}) }}">Préc</a></li>
+
+                    {% endif %}
+
+                    {% for i in paginationResults.numLinkMin..paginationResults.numLinkMax %}
+                        <li><a href="{{ path('liste_bd', {'page' : i}) }}">{{i}}</a></li>
+                        {% endfor %}
+
+                    {% if paginationResults.nextPage %}
+
+                        <li><a href="{{ path('liste_bd', {page: paginationResults.nextPage}) }}">Suiv</a></li>
+
+                    {% endif %}
+
+                </ul>
             </div>
-        </form>
-    </div>
-
-    <div id="liste_bd" >
-        {% for book in paginationResults.data %}
-
-            <table class="table_bd">
-                <tr>
-                    <td  class="head-div-book">
-                        <h2>{{ book.titre }}</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="{{ path("details_bd", {"slug":book.slug}) }}">
-                            <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
-                        </a>
-                        <p class="detail_bd">
-                            Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
-                        </p> 
-                        <p class="detail_bd">Auteur : {{ book.author.nom }}</p>
-                        <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
-                        <p class="stock_bd" data-value="{{book.id}}">Stock : {{ book.stock }}</p>
-
-                        <a href="{{ path("details_bd", {"slug":book.slug}) }}">
-
-
-                            <button class="btn btn-primary" data-value="{{ path("ajoutPanier", {id:book.id} )}}" >Plus de détails !</button>
-
-                        </a>
-
-                        <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >Ajouter au panier !</button>
-                    </td>
-                </tr>
-            </table>
-        {% endfor %}
-
-        <div style="clear: both;">
-            {{ paginationResults.nowShowingMin }} à {{ paginationResults.nowShowingMax }} sur {{ paginationResults.total }}
-
-            <ul class="pagination">
-
-                {% if paginationResults.prevPage %}
-
-                    <li><a href="{{ path('liste_bd', {page: paginationResults.prevPage}) }}">Préc</a></li>
-
-                {% endif %}
-
-                {% for i in paginationResults.numLinkMin..paginationResults.numLinkMax %}
-                    <li><a href="{{ path('liste_bd', {'page' : i}) }}">{{i}}</a></li>
-                    {% endfor %}
-
-                {% if paginationResults.nextPage %}
-
-                    <li><a href="{{ path('liste_bd', {page: paginationResults.nextPage}) }}">Suiv</a></li>
-
-                {% endif %}
-
-            </ul>
         </div>
     </div>
 {% endblock %}
