@@ -51,6 +51,8 @@ class CommandeController extends Controller
         {
             $com->addBook($book);
 
+
+            //mise à jour du stock dans la base de donnée
             $stock = $book->getStock();
             $book->setStock($stock-1);
             $manager->persist($book);
