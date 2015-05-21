@@ -27,16 +27,16 @@ class Commande {
     private $id;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="montant", type="float")
+     * @ORM\Column(name="montant", type="string")
      */
-    private $montant;
+    private $statut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCommande", type="datetime")
+     * @ORM\Column(name="dateCommande", type="datetime", nullable=true)
      */
     private $dateCommande;
 
@@ -48,7 +48,7 @@ class Commande {
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PickUpSpot", inversedBy="commandes")
-     * @ORM\JoinColumn(name="pickUpSpot_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="pickUpSpot_id", referencedColumnName="id", nullable=true)
      */
     protected $pickUpSpot;
 
