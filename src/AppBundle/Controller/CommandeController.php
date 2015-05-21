@@ -6,14 +6,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response; 
 
-<<<<<<< HEAD
 use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Commande;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Book;
 
-=======
->>>>>>> origin/master
+
 class CommandeController extends Controller
 {
      /**
@@ -21,7 +19,7 @@ class CommandeController extends Controller
      */
     public function ajoutPanier($id)
     {
-<<<<<<< HEAD
+
 
 
 
@@ -37,6 +35,7 @@ class CommandeController extends Controller
        {
             $com= $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
             //si on trouve un objet dans la base, symfony va l'updater au lieu de créer une nouvelle ligne
+
        }
        else
        {
@@ -44,21 +43,15 @@ class CommandeController extends Controller
             $com = new Commande();
        }
 
-=======
-        // création commande+ son statut
-        $com = new Commande();
-        $user = new User();
-        $user->setId($id);
-        
-        //$com->
->>>>>>> origin/master
-        
-        // creation du livre à ajouter avec la commande
+       
+        //on récupère le livre pour l'ajouter à la commande
+        $book= $bookRepo->find($id);
 
-        //attention à bien faire la jointure avec la page commande book
+        if(!$com->hasbook($book)) 
+        {
+            $com->addBook($book);
+        }
 
-
-<<<<<<< HEAD
         $com->setStatut("en_cours");
 
         //idem pour le user
@@ -72,9 +65,5 @@ class CommandeController extends Controller
         $manager->persist($com);
         $manager->flush();
         return new Response("Commande bien ajoutée");       
-=======
-        //ajout commande BDD
-        return ;
->>>>>>> origin/master
     }
 }
