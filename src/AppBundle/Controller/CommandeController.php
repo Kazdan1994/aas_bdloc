@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CommandeController extends Controller
 {
      /**
-     * @Route("/ajoutPanier/{id}", requirements={"page":"\d+"}, name="Ajout_Panier")
+     * @Route("/ajoutPanier/{id}", name="ajoutPanier")
      */
     public function ajoutPanier()
     {
@@ -17,4 +17,6 @@ class CommandeController extends Controller
 
 
         //ajout commande BDD
+        return ;
     }
+}
