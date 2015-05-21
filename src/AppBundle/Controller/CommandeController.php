@@ -9,14 +9,11 @@ use AppBundle\Entity\Categorie;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Book;
 
-
-
 class CommandeController extends Controller
 {
      /**
      * @Route("/ajoutPanier/{id}", name="ajoutPanier")
      */
-    public function ajoutPanier($id)
     public function ajoutPanier($id, ObjectManager $manager)
     {
 
