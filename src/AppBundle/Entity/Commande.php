@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Book;
 
 /**
  * Commande
@@ -207,5 +208,20 @@ class Commande {
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    public function hasbook(Book $book)
+    {
+        foreach($this->books as $bd)
+        {
+            if($bd->getId() == $book->getId())
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 }
