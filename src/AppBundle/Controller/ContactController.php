@@ -11,6 +11,6 @@ class ContactController extends Controller {
      */
     public function contactAction ()
     {
-        return $this->render('default/about.html.twig');
+        return $this->render('default/contact.html.twig');
     }
 }
