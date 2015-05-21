@@ -26,7 +26,7 @@
 
             <div style="float: left;">
                 {% if app.user and is_granted("ROLE_USER") %}
-                    <p id="pseudo_deco">Bonjour {{ app.user.nom }}</p><br />
+                    <p id="pseudo_deco">Bonjour {{ app.user.prenom }}</p><br />
                     <a id="deco" href="{{ path('logout') }}" title="BDLOC | déconnexion">Déconnexion</a>
                 {% endif %}
             </div>

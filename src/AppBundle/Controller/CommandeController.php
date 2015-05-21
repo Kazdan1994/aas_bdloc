@@ -16,7 +16,7 @@ class CommandeController extends Controller
         $user = new User();
         $user->setId($id);
         
-        $com->
+        //$com->
         
         // creation du livre à ajouter avec la commande
 
