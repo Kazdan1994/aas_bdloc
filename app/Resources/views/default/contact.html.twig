@@ -4,10 +4,13 @@
 
     <h2>SARL AAS-Bdloc </h2>
 
-    <h3>Possibilité de contact de Bdloc :</h3>
+    <form class="form-signin" action="{{ path('contact') }}" method="post">
 
-    <ol>
-        <li>Par téléphone</li>
-    </ol>
+        <label for="message_user">Votre message : <br />
+        <textarea name="textarea_contact" cols="30" rows="10"></textarea>
+        </label>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer votre message</button>
+    </form>
 
 {% endblock %}

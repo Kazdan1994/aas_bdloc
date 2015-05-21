@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Proxies\__CG__\AppBundle\Entity\categorie;
 
 /**
  * BookRepository
@@ -25,10 +26,24 @@ class BookRepository extends EntityRepository
 		*/
 		//Doctrine Query Builder
 		$qb = $this->createQueryBuilder("b");
-		$qb->select('b');
-			//->addSelect('a');
-			//->leftJoin('s.titre', 'a')
-			//->where('s.isPublished = 1');
+
+        /* Ajout des méthodes pour préparer la requête */
+        $qb->select('b')
+			->addSelect('s')
+			->leftJoin('b.serie', 's')
+            ->addSelect('c')
+            ->leftJoin('s.categorie', 'c');
+
+
+        if (!empty($_GET['categories'])) //Si une catégorie est sélectionnée dans le filtre
+        {
+            foreach ($_GET['categories'] as $categories) //On boucle pour ajouter un orWhere qui va varier en fonction des catégories sélectionnées
+            {
+                $qb->orWhere('c.id = :categorie')
+                   ->setParameter('categorie', $categories);
+            }
+        }
+
 		//commun aux deux
 		$query = $qb->getQuery();
 		$numPerPage = 10;
