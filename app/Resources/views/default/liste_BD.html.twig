@@ -52,7 +52,7 @@
                 <p class="detail_bd">Auteur : {{ book.author.nom }}</p>
                 <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
 
-                <p class="stock_bd">TODO : Disponible</p>
+                <p class="stock_bd" data-value="{{id:book.id}}>TODO : Disponible</p>
 
                 <a href="{{ path("details_bd", {"slug":book.slug}) }}">
 
