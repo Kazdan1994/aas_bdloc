@@ -1,3 +1,4 @@
+
 <?php
 namespace AppBundle\Controller;
 
@@ -15,6 +16,7 @@ class CommandeController extends Controller
      /**
      * @Route("/ajoutPanier/{id}", name="ajoutPanier")
      */
+    public function ajoutPanier($id)
     public function ajoutPanier($id, ObjectManager $manager)
     {
 
@@ -23,24 +25,16 @@ class CommandeController extends Controller
         // création commande+ son statut
         $com = new Commande();
         
-<<<<<<< HEAD
         //on récupère le livre pour l'ajouter à la commande
         $book= $bookRepo->find($id);
         $com->addBook($book);
-=======
-        //$com->
-        
-        // creation du livre à ajouter avec la commande
-
-        //attention à bien faire la jointure avec la page commande book
-
->>>>>>> origin/master
 
         //idem pour le user
         $user = $this->getUser();
         $com->setUser($user);
               
         //ajout commande BDD
+        return ;
         $manager->persist($com);
         $manager->flush();
 
