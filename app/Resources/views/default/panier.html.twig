@@ -4,23 +4,24 @@
 
 {% block body %}
     <h2 id="pan">Voici votre panier:</h2>
+    
     <table>
-        <tr>
-            <article class="article_panier">
-                <img alt="article" src="#" class="image_article"/>
-                <p class="titre_article">Titre de la bédé 1</p>
-                <button class="glyphicon glyphicon-remove-circle bt_suppr"></button>
+
+    {% for book in books %}
+        <tr class="ligne_panier" data-value ="{{book.id}}">
+            <td class="article_panier">
+
+            <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                    <img class="image_article" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                </a>
+                <p class="titre_article">
+                    Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
+                </p>                
+                <button class="glyphicon glyphicon-remove-circle bt_suppr" data-value = "{{ path("supprPanier", {id:book.id} )}}" ></button>
                 <p class="sup_article">Retirer du panier</p>
-            </article>
+            </td>
         </tr>
-        <tr>
-            <article class="article_panier">
-                <img alt="article" src="#" class="image_article"/>
-                <p class="titre_article">Titre de la bédé 1</p>
-                <button class="glyphicon glyphicon-remove-circle bt_suppr"></button>
-                <p class="sup_article">Retirer du panier</p>
-            </article>
-        </tr>
+    {% endfor %}
 
     </table>
 
@@ -29,16 +30,3 @@
 
 {% endblock %}
 
-{# Commentaire
-{% for comment in story.comments %}    
-            <tr>
-                <article class="article_panier">
-                <img alt="article" src="#" class="image_article"/>
-                <p class="titre_article">Titre de la bédé 1</p>
-                <button class="glyphicon glyphicon-remove-circle bt_suppr"></button>
-                <p class="sup_article">Retirer du panier</p>
-                </article>
-            </tr>
-            
-{% endfor %}
-#} 

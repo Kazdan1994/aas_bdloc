@@ -16,7 +16,8 @@ class BdController extends Controller
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
         //récupère toutes les BD de la bdd
         $paginationResults = $storyRepo->findPaginated($page);
-        if (!$paginationResults) {
+        if (!$paginationResults) 
+        {
             throw $this->createNotFoundException();
         }
 
@@ -57,6 +58,8 @@ class BdController extends Controller
         return $this->render('default/details_bd.html.twig', $params);
         
     }
+
+    
 }
  
      

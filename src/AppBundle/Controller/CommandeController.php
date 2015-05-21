@@ -19,10 +19,6 @@ class CommandeController extends Controller
      */
     public function ajoutPanier($id)
     {
-
-
-
-
         $manager = $this->container->get('doctrine')->getManager();
 
         $bookRepo = $this->container->get('doctrine')->getRepository("AppBundle:Book");
@@ -76,6 +72,6 @@ class CommandeController extends Controller
         //ajout commande BDD
         $manager->persist($com);
         $manager->flush();
-        return new Response("Commande bien ajoutée");       
+        return new Response($book->getstock());       
     }
 }
