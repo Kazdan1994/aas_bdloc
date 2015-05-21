@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Book;
 
 /**
  * Commande
@@ -29,7 +30,7 @@ class Commande {
     /**
      * @var string
      *
-     * @ORM\Column(name="montant", type="string")
+     * @ORM\Column(name="statut", type="string")
      */
     private $statut;
 
@@ -184,5 +185,41 @@ class Commande {
     public function getBooks()
     {
         return $this->books;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Commande
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+//fonction permettant de checker si le book cliqué est déjà présent dans une commande 
+    public function hasbook(Book $book)
+    {
+        foreach($this->books as $bd)// pour chaque book dans la commande
+        {
+            if($bd->getId() == $book->getId()) //on compare leurs id
+            {
+                return true; // on renvoie true car on a trouvé le livre
+            }           
+        }
+        return false; // renvoie false s'il n'a pas trouvé la ligne
     }
 }
