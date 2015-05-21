@@ -12,7 +12,7 @@ body
     border-radius: 0px;
 }
 header{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 #logo {
@@ -94,19 +94,20 @@ header{
 {
     float:left;
     width: 200px;
+    background: #ECECEC;
+    padding: 10px;
 }
 
-#block_filtre fieldset
-{
-    border:0.1em solid black;
-    padding : 1em;
-}
-
-#block_filtre fieldset legend
-{
-    font-size: 1em; 
-    width: 30%;
-    padding: 0em 0.5em;
+.div_orange{
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: #e95325;
+    border-color: transparent transparent #b03712;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 3px;
 }
 
 fieldset label
@@ -114,14 +115,9 @@ fieldset label
     width:100%;
 }
 
-#dispo
-{
-    margin-top:15%;
-}
-
 #bt_filtre
 {
-    margin-top:1em;
+    margin-top:10px;
 }
 
 /*////// Bloc représentant la liste des BDs /////////*/
@@ -375,3 +371,19 @@ fieldset label
             text-align: center;
             padding: 15px 0px;
         }
+        
+        
+        #ul_about_author
+{
+	list-style: none;
+}
+
+.li_about
+{
+	display: inline-block;
+}
+
+.h3_about
+{
+	font-weight: bold;
+}
