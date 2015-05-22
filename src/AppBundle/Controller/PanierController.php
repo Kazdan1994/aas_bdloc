@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response; 
 use Symfony\Component\HttpFoundation\Request;
 
+
 use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Commande;
 use AppBundle\Entity\User;
@@ -112,9 +113,29 @@ class PanierController extends Controller
         //si le form est validé, on va mettre à jour la commande
         if ($registerForm->isValid()) 
         {           
-            $date = new Date('d,m,y');
+            $date = new \DateTime();
+            $com->setStatut("Validée");
             $com->setDateCommande($date);
             $manager->flush();
+
+            $dateLivraison=new \DateTime('+2 days');
+            $dateRamene= new \DateTime('+15 days');
+
+            $params = array(
+                "commande" => $com,
+                "user"=>$user,  
+                "dtLiv" => $dateLivraison,
+                "dtRam" => $dateRamene,
+            ); 
+
+            $mailer = $this->get('mailer');
+            $message = $mailer->createMessage()
+                              ->setSubject("t'as un mail mec")
+                              ->setFrom('remoi.test123@gmail.com')
+                              ->setTo('remoi.test123@gmail.com')
+                              ->setBody($this->render("email/mail.html.twig", $params),'text/html');
+            $mailer->send($message);
+
         } 
 
 

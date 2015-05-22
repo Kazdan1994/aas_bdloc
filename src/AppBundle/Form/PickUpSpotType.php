@@ -15,9 +15,8 @@ class PickUpSpotType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('PointsRelais','entity',array(
-                "class"=>"AppBundle:PickUpSpot",
-                "mapped"=>false,     
+            ->add('pickUpSpot','entity',array(
+                "class"=>"AppBundle:PickUpSpot",                    
                 ))           
             ->add('Valider votre Commande','submit')
             // ->add('nom'." ".'adresse'." "."cp"." "."ville", "select")
