@@ -27,13 +27,12 @@ class BookRepository extends EntityRepository
 		//Doctrine Query Builder
 		$qb = $this->createQueryBuilder("b");
 
-        /* Ajout des méthodes pour préparer la requête */
+        /* FILTRES */
         $qb->select('b')
 			->addSelect('s')
 			->leftJoin('b.serie', 's')
             ->addSelect('c')
             ->leftJoin('s.categorie', 'c');
-
 
         if (!empty($_GET['categories'])) //Si une catégorie est sélectionnée dans le filtre
         {

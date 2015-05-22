@@ -10,6 +10,10 @@ use Symfony\Component\Security\Core\Util\SecureRandom;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
 
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+
 /**
  * @Route("")
  */
@@ -64,6 +68,17 @@ class UserController extends Controller {
             $em = $this->get('doctrine')->getManager();
             $em->persist($user);
             $em->flush();
+
+            /* Code pour logger l'utilisateur lorsqu'il s'enregistre */
+            $token = new UsernamePasswordToken($user, null, "main", $user->getRoles());
+            $this->get("security.token_storage")->setToken($token); //now the user is logged in
+            //now dispatch the login event
+            $request = $this->get("request");
+            $event = new InteractiveLoginEvent($request, $token);
+            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+
+
+            return $this->redirectToRoute('liste_bd');
         }
 
         $params = array(
