@@ -5,7 +5,7 @@
         <form method="get">
             <fieldset>
                 <legend> Filtres </legend>
-                <div class="div_orange"> Catégories </div>
+                <div class="div_orange">Catégories</div>
 
 
                 {% for categorie in categories %}
@@ -32,12 +32,12 @@
                 <div class="form-group">
                     <fieldset>
                         <legend> Resultats </legend>
-                        <select class="form-control input-sm liste_tri">
+                        <select name="select_trier" class="form-control input-sm liste_tri">
                             <option value="value1" selected>Trier par...</option> 
                             <option value="value2" >Valeur 2</option>
                             <option value="value3">Valeur 3</option>
                         </select>
-                        <select class="form-control input-sm liste_tri">
+                        <select name="afficher_resultats" class="form-control input-sm liste_tri">
                             <option value="value1" >afficher 5 résultats</option> 
                             <option value="value2" >afficher 10 résultats</option>
                             <option value="value3" selected>afficher 20 résultats</option>

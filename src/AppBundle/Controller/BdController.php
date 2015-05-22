@@ -12,21 +12,26 @@ class BdController extends Controller
      */
     public function listBdAction(Request $request, $page)
     {
-        /******************* PARTIE FILTRE ***********************/
+        /******************* PARTIE FILTRE checkbox ***********************/
         $queryString = ('?'.$request->getQueryString()); //On récupère le filtre de l'url
 
         //Array vide si l'url n'a pas de filtres
         $checkboxCategories =  array();
-
 
         if (!empty ($_GET['categories'])) //Si les filtres sont présent dans l'url
         {
             //On récupère les catégories dans la variable $checkboxCategories
             $checkboxCategories = $_GET['categories'];
         }
-        /******************* PARTIE FILTRE ***********************/
+        /******************* PARTIE FILTRE checkbox ***********************/
+
 
         /******************* PARTIE mots-clés ***********************/
+
+        if (!empty($_GET['input_mots_cles'])) //Si les filtre mots-clés est présent dans l'url
+        {
+            $checkboxCategories = $_GET['input_mots_cles'];
+        }
 
         /******************* PARTIE mots-clés ***********************/
         

@@ -53,11 +53,19 @@ class BookRepository extends EntityRepository
             {
                 //On passe le résultat du champs de saisie de mots-clés dans l'url
                 $book = $_GET['input_mots_cles'];
+                $recherche = $this->fetch();
 
-                //On ajoute les orWhere
-                $qb->orWhere('a.nom = :book') //Si on cherche un nom d'auteur
-                    ->orWhere('b.titre = :book') //Si on cherche un titre
-                    ->setParameter('book', $book);
+                if ($book:book || $book:book)
+                    {
+                        //On ajoute les orWhere
+                        $qb->orWhere('a.nom = :book')//Si on cherche un nom d'auteur
+                        ->orWhere('b.titre = :book')//Si on cherche un titre
+                        ->setParameter('book', $book);
+                    }
+                else
+                {
+
+                }
             }
             /******************* PARTIE mots-clés ***********************/
 
