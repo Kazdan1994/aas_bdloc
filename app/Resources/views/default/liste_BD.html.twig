@@ -44,8 +44,8 @@
             {% for book in paginationResults.data %}
 
                 <table class="table_bd">
-                    <tr class="head-div-book">
-                        <td>
+                    <tr >
+                        <td class="head-div-book">
                             <h3>{{ book.titre }}</h3>
                         </td>
                     </tr>
@@ -57,9 +57,9 @@
                             <p class="detail_bd">
                                 Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
                             </p> 
-                            <p class="detail_bd">Auteur : {{ book.author.nom }}</p>
-                            <p class="detail_bd">Éditeur : {{ book.editeur }}</p>
-                            <p class="stock_bd" data-value="{{book.id}}">Stock : {{ book.stock }}</p>
+                            <p>Auteur : {{ book.author.nom }}</p>
+                            <p>Éditeur : {{ book.editeur }}</p>
+                            <p data-value="{{book.id}}">Stock : {{ book.stock }}</p>
 
                             <a href="{{ path("details_bd", {"slug":book.slug}) }}">
 
@@ -74,8 +74,7 @@
                 </table>
             {% endfor %}
 
-            <div>
-                {{ paginationResults.nowShowingMin }} à {{ paginationResults.nowShowingMax }} sur {{ paginationResults.total }}
+            <div id="div_pagination">
 
                 <ul class="pagination">
 
@@ -96,6 +95,9 @@
                     {% endif %}
 
                 </ul>
+                <div>
+                    {{ paginationResults.nowShowingMin }} à {{ paginationResults.nowShowingMax }} sur {{ paginationResults.total }}
+                </div>
             </div>
         </div>
     </div>
