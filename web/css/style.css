@@ -5,7 +5,7 @@ body
 #container
 {
     margin: 0px auto;
-    margin-top:2.5em;
+    margin-top:10px;
     background: white;
     max-width:960px;
     padding:20px;
@@ -155,47 +155,46 @@ fieldset label
     float: left;
     margin-left: 20px;
     box-sizing: border-box;
-    
+
+}
+.table_bd:nth-child(odd){
+    margin-right: 10px;
+
+}
+
+.table_bd
+{
+    width: 345px;
+    box-sizing: border-box;
+    height:500px;
+    float:left;
+    margin-top: 10px;
+    background: #f9ecec;
+    text-align: center;
 }
 
 .head-div-book{
     background-color: #303030;
     color: white;
     font-size: 1.3em;
-    padding: 5px 10px;
-    height: 100px;
+    height: 70px;
+
+}
+h3{
+    font-size: 1em;
+    margin: 0px;
 }
 
-.table_bd
-{
-    width: 350px;
-    box-sizing: border-box;
-    height:500px;
-    float:left;
-    margin-top: 10px;
-}
 
 .image_bd
 {
-    height:100%;
-    width:50%;
-    float:left;
+    width:55%;
 }
-
-.detail_bd
-{
-    width: 40%;
-    margin: 0 0 0 2%;
-    float:left;
+#div_pagination{
+    clear: both;
+    width: 700px;
+    text-align: center;
 }
-
-.stock_bd
-{
-    width: 40%;
-    margin: 15% 0 0 2%;
-    float:left;
-}
-
 
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE Panier///////////////////*/
@@ -339,7 +338,7 @@ fieldset label
 }
 
 /*Détail de la BD*/
-#book_detail
+/*#book_detail
 {
     padding : 0 2% 0 2% ;
     float: left;
@@ -349,7 +348,7 @@ fieldset label
 
 .detail_BD
 {
-    /*  float: left;*/
+      float: left;
     margin-top: 5%;
 }
 
@@ -363,7 +362,7 @@ fieldset label
 .bt_ajout
 {
     margin-top: 32.5%;
-}
+}*/
 
 /* ---- logo ----- */
 .text-muted{
