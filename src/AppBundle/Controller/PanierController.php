@@ -96,8 +96,10 @@ class PanierController extends Controller
         $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
         $pickupRepo = $this->container->get('doctrine')->getRepository("AppBundle:PickUpSpot");
 
+        $pickupspots = $pickupRepo->findAll();
 
         //chargement de la liste des pickupspots
+
 
 
     }
