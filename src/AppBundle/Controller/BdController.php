@@ -27,10 +27,11 @@ class BdController extends Controller
 
 
         /******************* PARTIE mots-clés ***********************/
+        $MotsCle = '';
 
         if (!empty($_GET['input_mots_cles'])) //Si les filtre mots-clés est présent dans l'url
         {
-            $checkboxCategories = $_GET['input_mots_cles'];
+            $MotsCle = $_GET['input_mots_cles'];
         }
 
         /******************* PARTIE mots-clés ***********************/
@@ -39,10 +40,6 @@ class BdController extends Controller
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
         //récupère toutes les BD de la bdd
         $paginationResults = $storyRepo->findPaginated($page);
-        if (!$paginationResults) 
-        {
-            throw $this->createNotFoundException();
-        }
 
         $categRepo = $this->get("doctrine")->getRepository("AppBundle:Categorie");
 
