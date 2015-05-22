@@ -28,19 +28,19 @@
 
                 <nav>
                     <ul class="nav nav-justified">
-                        <li class="active">
+                        <li {% if app.request.attributes.get('_route') == 'liste_bd' %}class="active"{% endif %}>
                             <a href="{{ path('liste_bd') }}" title="BDLOC | BD">Les BD</a>
                         </li>
-                        <li>
+                        <li {% if app.request.attributes.get('_route') == 'panier' %}class="active"{% endif %}>
                             <a href="{{ path('panier') }}" title="BDLOC | Panier">Mon panier</a>
                         </li>
-                        <li>
+                        <li {% if app.request.attributes.get('_route') == 'compte_user' %}class="active"{% endif %}>
                             <a href="{{ path('compte_user') }}" title="BDLOC | Compte">Mon compte</a>
                         </li>
-                        <li>
+                        <li {% if app.request.attributes.get('_route') == 'about' %}class="active"{% endif %}>
                             <a href="{{ path('about') }}">A propos</a>
                         </li>
-                        <li>
+                        <li {% if app.request.attributes.get('_route') == 'contact' %}class="active"{% endif %}>
                             <a href="{{ path('contact') }}">Contact</a>
                         </li>
                     </ul>
