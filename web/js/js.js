@@ -40,3 +40,7 @@ $(document).on('click',".bt_suppr", function() // bouton suppression du panier
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 });
+
+$('body').on('hidden.bs.modal', '.modal', function () {
+  $(this).removeData('bs.modal');
+});
