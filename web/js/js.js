@@ -35,3 +35,8 @@ $(document).on('click',".bt_suppr", function() // bouton suppression du panier
                         }
                });
 });
+
+//modal pour afficher details auteur
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+});

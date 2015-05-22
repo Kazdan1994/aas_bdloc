@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Détails sur l'auteur</h2>
+    <ul>
+        {% if(author.pseudo != null) %}
+            <li>
+                Pseudo : {{ author.pseudo }}
+            </li>
+        {% endif %}
+        {% if(author.nom != null) %}
+            <li>
+                Nom : {{ author.nom }}
+            </li>
+        {% endif %}
+        {% if(author.prenom != null) %}
+            <li>
+                Prénom : {{ author.prenom }}
+            </li>
+        {% endif %}
+        {% if(author.birth != null) %}
+            <li>
+                Né le :   {{ author.birth|date('d-m-Y') }} 
+            </li>
+        {% endif %}
+        {% if(author.pays != null) %}
+            <li>
+                Pays de  naissance : {{ author.pays }}
+            </li>
+        {% endif %}
+        {% if(author.death != null) %}
+            <li>
+                Nous a quitté le : {{ author.death|date('d-m-Y') }}
+            </li>
+        {% endif %}
+    </ul>
+
+{% endblock %}
