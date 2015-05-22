@@ -110,16 +110,17 @@ class PanierController extends Controller
         $registerForm = $this->createForm(new PickUpSpotType(), $com);
         $registerForm->handleRequest($request);
         
+
+        
         //si le form est validé, on va mettre à jour la commande
         if ($registerForm->isValid()) 
         {           
+            $dateLivraison=new \DateTime('+2 days');
+            $dateRamene= new \DateTime('+15 days');
             $date = new \DateTime();
             $com->setStatut("Validée");
             $com->setDateCommande($date);
-            $manager->flush();
-
-            $dateLivraison=new \DateTime('+2 days');
-            $dateRamene= new \DateTime('+15 days');
+            $manager->flush();          
 
             $params = array(
                 "commande" => $com,
@@ -128,22 +129,23 @@ class PanierController extends Controller
                 "dtRam" => $dateRamene,
             ); 
 
+            //envoie du mail
             $mailer = $this->get('mailer');
             $message = $mailer->createMessage()
                               ->setSubject("t'as un mail mec")
                               ->setFrom('remoi.test123@gmail.com')
                               ->setTo('remoi.test123@gmail.com')
                               ->setBody($this->render("email/mail.html.twig", $params),'text/html');
-            $mailer->send($message);
-
+            $mailer->send($message);            
+            
+            return $this->render('default/recap.html.twig', $params);
         } 
 
-
-
         $params = array(
-                'pickupspots' => $pickupspots,
-                'registerForm' => $registerForm->createView(),
+                "pickupspots" => $pickupspots,
+                "registerForm" => $registerForm->createView(),
             ); 
+            
         return $this->render('default/pickupspot.html.twig', $params);
     }
 }
