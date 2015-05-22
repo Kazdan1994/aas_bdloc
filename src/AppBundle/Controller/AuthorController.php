@@ -20,7 +20,7 @@ class AuthorController extends Controller
         
         if (!$author)
         {
-            throw $this->createNotFoundException("Oups y a un problème lier à l'auteur !");
+            throw $this->createNotFoundException("Oups y a un problème lier à auteur !");
 	}
                 
                 

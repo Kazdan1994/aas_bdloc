@@ -48,6 +48,7 @@
         </div>
 
         <div id="liste_bd">
+            {% if paginationResults %}
             {% for book in paginationResults.data %}
 
                 <table class="table_bd">
@@ -65,7 +66,10 @@
                                 Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
                             </p> 
                             <p>
-                                Auteur : <a href="{{ path("author", {"slug":book.author.slug}) }}">{{ book.author.nom }}</a>
+                                Auteur : 
+                                <a href="{{ path("author", {"slug":book.author.slug}) }}" data-toggle="modal" data-target="#myModal">
+                                    {{ book.author.nom }}
+                                </a>
                             </p>
                             <p>Éditeur : {{ book.editeur }}</p>
                             <p data-value="{{book.id}}">Stock : {{ book.stock }}</p>
@@ -110,5 +114,29 @@
             </div>
         </div>
     </div>
+      
+                    
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+    <p>Désolé nous n'avons pas reconnu votre requête</p>
+{% endif %}
 {% endblock %}
 
