@@ -29,7 +29,10 @@
 
             <a href="{{ path("home") }}" title="BDLOC | Page précédente" id="page_prec">Revenir à la page précédente</a>
 
-            <button class="btn btn-primary bt_detail">Ajouter au panier !</button>
+            <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >
+                Ajouter au panier !
+            </button>
+
         </div>
     </article>
 

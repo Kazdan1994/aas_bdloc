@@ -11,8 +11,8 @@
                 {% for categorie in categories %}
                     <label>
                         <input id="input_checkbox" name="categories[]" type="checkbox"
-                                {% if categorie.id in checkboxCategories %}
-                               checked="checked"
+                               {% if categorie.id in checkboxCategories %}
+                                   checked="checked"
                                {% endif %}
                                value="{{ categorie.id }}"> {{categorie.nomCat}}
                     </label>
@@ -62,7 +62,9 @@
                             <p class="detail_bd">
                                 Catégorie(s) : {% for cat in  book.serie.categorie %}{{ cat.nomCat }}{% endfor %}
                             </p> 
-                            <p>Auteur : {{ book.author.nom }}</p>
+                            <p>
+                                Auteur : <a href="{{ path("author", {"slug":book.author.slug}) }}">{{ book.author.nom }}</a>
+                            </p>
                             <p>Éditeur : {{ book.editeur }}</p>
                             <p data-value="{{book.id}}">Stock : {{ book.stock }}</p>
 
