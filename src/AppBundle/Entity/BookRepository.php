@@ -27,23 +27,41 @@ class BookRepository extends EntityRepository
 		//Doctrine Query Builder
 		$qb = $this->createQueryBuilder("b");
 
-        /* FILTRES */
+         /* FILTRES */
          $qb->select('b')
 			->addSelect('s')
 			->leftJoin('b.serie', 's')
+             ->leftJoin('b.author', 'a')
+             ->addSelect('a')
             ->addSelect('c')
             ->leftJoin('s.categorie', 'c');
 
+
+        /******************* FILTRES PARTIE checkbox ***********************/
         if (!empty($_GET['categories'])) //Si une catégorie est sélectionnée dans le filtre
         {
             $i = 0;
             foreach ($_GET['categories'] as $categories) //On boucle pour ajouter un orWhere qui va varier en fonction des catégories sélectionnées
             {
                 $i++;
-                $qb->orWhere('c.id = :categorie'.$i)
-                   ->setParameter('categorie'.$i, $categories);
+                $qb->orWhere('c.id = :categorie' . $i) //On cherche la/les catégories
+                    ->setParameter('categorie' . $i, $categories);
             }
         }
+            /******************* FILTRES PARTIE mots-clés ***********************/
+            if (!empty($_GET['input_mots_cles']) ) //Si une catégorie est sélectionnée dans le filtre
+            {
+                //On passe le résultat du champs de saisie de mots-clés dans l'url
+                $book = $_GET['input_mots_cles'];
+
+                //On ajoute les orWhere
+                $qb->orWhere('a.nom = :book') //Si on cherche un nom d'auteur
+                    ->orWhere('b.titre = :book') //Si on cherche un titre
+                    ->setParameter('book', $book);
+            }
+            /******************* PARTIE mots-clés ***********************/
+
+
 
 		//commun aux deux
 		$query = $qb->getQuery();
