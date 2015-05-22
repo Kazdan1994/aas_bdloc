@@ -7,10 +7,15 @@
                 <legend> Filtres </legend>
                 <div class="div_orange"> Catégories </div>
 
+
                 {% for categorie in categories %}
                     <label>
-                        <input type="checkbox" name="categories[]" value="{{ categorie.id }}"> {{categorie.nomCat}}
-                    </label>                    
+                        <input id="input_checkbox" name="categories[]" type="checkbox"
+                                {% if categorie.id in checkboxCategories %}
+                               checked="checked"
+                               {% endif %}
+                               value="{{ categorie.id }}"> {{categorie.nomCat}}
+                    </label>
                 {% endfor %}
 
                 <label for="search"></label>
@@ -80,17 +85,17 @@
 
                     {% if paginationResults.prevPage %}
 
-                        <li><a href="{{ path('liste_bd', {page: paginationResults.prevPage}) }}">Préc</a></li>
+                        <li><a href="{{ path('liste_bd', {page: paginationResults.prevPage})~queryString }}">Préc</a></li>
 
                     {% endif %}
 
                     {% for i in paginationResults.numLinkMin..paginationResults.numLinkMax %}
-                        <li><a href="{{ path('liste_bd', {'page' : i}) }}">{{i}}</a></li>
+                        <li><a href="{{ path('liste_bd', {'page' : i})~queryString }}">{{i}}</a></li>
                         {% endfor %}
 
                     {% if paginationResults.nextPage %}
 
-                        <li><a href="{{ path('liste_bd', {page: paginationResults.nextPage}) }}">Suiv</a></li>
+                        <li><a href="{{ path('liste_bd', {page: paginationResults.nextPage})~queryString }}">Suiv</a></li>
 
                     {% endif %}
 

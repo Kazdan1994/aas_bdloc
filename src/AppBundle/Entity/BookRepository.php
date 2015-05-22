@@ -28,7 +28,7 @@ class BookRepository extends EntityRepository
 		$qb = $this->createQueryBuilder("b");
 
         /* FILTRES */
-        $qb->select('b')
+         $qb->select('b')
 			->addSelect('s')
 			->leftJoin('b.serie', 's')
             ->addSelect('c')
@@ -36,10 +36,12 @@ class BookRepository extends EntityRepository
 
         if (!empty($_GET['categories'])) //Si une catégorie est sélectionnée dans le filtre
         {
+            $i = 0;
             foreach ($_GET['categories'] as $categories) //On boucle pour ajouter un orWhere qui va varier en fonction des catégories sélectionnées
             {
-                $qb->orWhere('c.id = :categorie')
-                   ->setParameter('categorie', $categories);
+                $i++;
+                $qb->orWhere('c.id = :categorie'.$i)
+                   ->setParameter('categorie'.$i, $categories);
             }
         }
 
