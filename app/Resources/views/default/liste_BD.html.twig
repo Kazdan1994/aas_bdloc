@@ -10,7 +10,7 @@
 
                 {% for categorie in categories %}
                     <label>
-                        <input name="categories[]" type="checkbox"
+                        <input id="input_checkbox" name="categories[]" type="checkbox"
                                 {% if categorie.id in checkboxCategories %}
                                checked="checked"
                                {% endif %}

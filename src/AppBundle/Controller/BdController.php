@@ -12,6 +12,7 @@ class BdController extends Controller
      */
     public function listBdAction(Request $request, $page)
     {
+        /******************* PARTIE FILTRE ***********************/
         $queryString = ('?'.$request->getQueryString()); //On récupère le filtre de l'url
 
         //Array vide si l'url n'a pas de filtres
@@ -23,6 +24,11 @@ class BdController extends Controller
             //On récupère les catégories dans la variable $checkboxCategories
             $checkboxCategories = $_GET['categories'];
         }
+        /******************* PARTIE FILTRE ***********************/
+
+        /******************* PARTIE mots-clés ***********************/
+
+        /******************* PARTIE mots-clés ***********************/
         
         //on récupére le repository de Book
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
