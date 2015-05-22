@@ -3,14 +3,26 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class BdController extends Controller
 {
      /**
      * @Route("/liste_bd/{page}",requirements={"page":"\d+"}, defaults={"page":1}, name="liste_bd")
      */
-    public function listBdAction($page)
-    {        
+    public function listBdAction(Request $request, $page)
+    {
+        $queryString = ('?'.$request->getQueryString()); //On récupère le filtre de l'url
+
+        //Array vide si l'url n'a pas de filtres
+        $checkboxCategories =  array();
+
+
+        if (!empty ($_GET['categories'])) //Si les filtres sont présent dans l'url
+        {
+            //On récupère les catégories dans la variable $checkboxCategories
+            $checkboxCategories = $_GET['categories'];
+        }
         
         //on récupére le repository de Book
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");
@@ -29,6 +41,8 @@ class BdController extends Controller
         $params = array(
             "paginationResults" => $paginationResults,
             "categories"=> $CategoriesArray,
+            "queryString" => $queryString,
+            "checkboxCategories" => $checkboxCategories
         );
 
         return $this->render('default/liste_bd.html.twig', $params);
@@ -56,10 +70,7 @@ class BdController extends Controller
             'book' => $book,
         );
         return $this->render('default/details_bd.html.twig', $params);
-        
     }
-
-    
 }
  
      
