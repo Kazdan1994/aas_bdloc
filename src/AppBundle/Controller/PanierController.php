@@ -86,7 +86,7 @@ class PanierController extends Controller
 ///////////CHOIX DU PICKUPSPOT/////////////
 
     /**
-    *@Route("/pickup", name="pickup")
+    *@Route("/pickupspot", name="pickup")
     */
     public function pickup()
     {
@@ -96,12 +96,14 @@ class PanierController extends Controller
         $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
         $pickupRepo = $this->container->get('doctrine')->getRepository("AppBundle:PickUpSpot");
 
-        $pickupspots = $pickupRepo->findAll();
-
         //chargement de la liste des pickupspots
+        $pickupspots = $pickupRepo->findAll();
+        
+        $params = array(
+                'pickupspots' => $pickupspots,
+            ); 
 
-
-
+        return $this->render('default/pickupspot.html.twig', $params);
     }
 
 
