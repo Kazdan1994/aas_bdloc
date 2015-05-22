@@ -266,4 +266,9 @@ class PickUpSpot
     {
         return $this->commandes;
     }
+
+        public function __toString()
+    {
+        return $this->getNom()." ".$this->getAdresse()." ".$this->getCp()." ".$this->getVille();
+    }
 }

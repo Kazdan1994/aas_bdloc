@@ -3,14 +3,22 @@
 
 
 {% block body %}
-    <form id="liste_deroul">
-                <SELECT class="form-control">
-                    {% for pickup in pickupspots %}
-                        <OPTION> {{pickup.nom}} {{pickup.adresse}} {{pickup.cp}} {{pickup.ville}}
-                    {% endfor %}
-                </SELECT>
 
-                <button type="submit" class="btn btn-default" id="bt_valid">Choisir</button>
-            </form>
+        <h1>Vas te faire foutre</h1>
+        {# liste déroulante #}
+        {{ form(registerForm) }}
+
+
+        {#
+        <form id="liste_deroul">
+        <SELECT class="form-control" name="">
+            {% for pickup in pickupspots %}
+                <OPTION> {{pickup.nom}} {{pickup.adresse}} {{pickup.cp}} {{pickup.ville}}
+            {% endfor %}
+        </SELECT>
+
+        <button type="submit" class="btn btn-default" id="bt_valid">Choisir</button>
+        </form>
+        #}    
 {% endblock %}
 

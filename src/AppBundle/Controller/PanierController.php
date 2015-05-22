@@ -4,12 +4,14 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response; 
+use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Commande;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Book;
 use AppBundle\Entity\PickUpSpot;
+use AppBundle\Form\PickUpSpotType;
 
 class PanierController extends Controller
 {
@@ -83,12 +85,12 @@ class PanierController extends Controller
 
 
 
-///////////CHOIX DU PICKUPSPOT/////////////
+///////////CHOIX DU PICKUPSPOT + validation/////////////
 
     /**
     *@Route("/pickupspot", name="pickup")
     */
-    public function pickup()
+    public function pickup(Request $request)
     {
         //creation Repo
         $manager = $this->container->get('doctrine')->getManager();
@@ -96,54 +98,85 @@ class PanierController extends Controller
         $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
         $pickupRepo = $this->container->get('doctrine')->getRepository("AppBundle:PickUpSpot");
 
+        $user = $this->getUser();
+
+        $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
+
         //chargement de la liste des pickupspots
         $pickupspots = $pickupRepo->findAll();
         
+        // creation du formulaire
+        $registerForm = $this->createForm(new PickUpSpotType(), $com);
+        $registerForm->handleRequest($request);
+        
+        //si le form est validé, on va mettre à jour la commande
+        if ($registerForm->isValid()) 
+        {           
+            $date = new Date('d,m,y');
+            $com->setDateCommande($date);
+            $manager->flush();
+        } 
+
+
+
         $params = array(
                 'pickupspots' => $pickupspots,
+                'registerForm' => $registerForm->createView(),
             ); 
-
         return $this->render('default/pickupspot.html.twig', $params);
     }
-
-
-
-
-
-
-
-
-/////////VALIDATION COMMANDE///////////////
-
-    /**
-    *@Route("/validerCommande", name="validerCommande")
-    */
-    public function valider()
-    {
-        $manager = $this->container->get('doctrine')->getManager();
-        $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
-        
-        //récupèration user
-        $user = $this->getUser();
-        //on cherche la commande en cours dans la base de donéne
-        $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
-        
-        //on l'hydrate avec la date
-        $date = new Date('d,m,y');
-
-        //on l'hydrate avec le pickUpSpot choisi
-
-
-        //mise à jour du statut
-        $com->setStatut("validée"); 
-
-        //mise à jour base de donnée
-        $manager->persist($com);
-        $manager->flush();
-
-    }
-
-
 }
+
+
+
+
+
+
+
+// /////////VALIDATION COMMANDE///////////////
+
+//     /**
+//     *@Route("/validerCommande", name="validerCommande")
+//     */
+//     public function valider()
+//     {
+//         $manager = $this->container->get('doctrine')->getManager();
+//         $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
+
+        
+//         //récupèration user
+//         $user = $this->getUser();
+//         //on cherche la commande en cours dans la base de donéne
+//         $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
+        
+//         //on l'hydrate avec la date
+    
+
+//         //on l'hydrate avec le pickUpSpot choisi
+
+
+
+
+
+
+//         //mise à jour du statut
+//         $com->setStatut("validée"); 
+
+//         //mise à jour base de donnée
+//         $manager->persist($com);
+//         $manager->flush();
+
+//         //envoie d'un mail
+
+
+
+
+
+
+//         return $this->redirectToRoute('liste_bd');
+//     }
+
+
+// }
 
         
