@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response; 
 use Symfony\Component\HttpFoundation\Request;
 
+
 use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Commande;
 use AppBundle\Entity\User;
@@ -109,20 +110,42 @@ class PanierController extends Controller
         $registerForm = $this->createForm(new PickUpSpotType(), $com);
         $registerForm->handleRequest($request);
         
+
+        
         //si le form est validé, on va mettre à jour la commande
         if ($registerForm->isValid()) 
         {           
-            $date = new Date('d,m,y');
+            $dateLivraison=new \DateTime('+2 days');
+            $dateRamene= new \DateTime('+15 days');
+            $date = new \DateTime();
+            $com->setStatut("Validée");
             $com->setDateCommande($date);
-            $manager->flush();
+            $manager->flush();          
+
+            $params = array(
+                "commande" => $com,
+                "user"=>$user,  
+                "dtLiv" => $dateLivraison,
+                "dtRam" => $dateRamene,
+            ); 
+
+            //envoie du mail
+            $mailer = $this->get('mailer');
+            $message = $mailer->createMessage()
+                              ->setSubject("t'as un mail mec")
+                              ->setFrom('remoi.test123@gmail.com')
+                              ->setTo('remoi.test123@gmail.com')
+                              ->setBody($this->render("email/mail.html.twig", $params),'text/html');
+            $mailer->send($message);            
+            
+            return $this->render('default/recap.html.twig', $params);
         } 
 
-
-
         $params = array(
-                'pickupspots' => $pickupspots,
-                'registerForm' => $registerForm->createView(),
+                "pickupspots" => $pickupspots,
+                "registerForm" => $registerForm->createView(),
             ); 
+            
         return $this->render('default/pickupspot.html.twig', $params);
     }
 }
