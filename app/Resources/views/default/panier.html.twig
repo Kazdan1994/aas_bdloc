@@ -1,29 +1,33 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h2 id="pan">Voici votre panier:</h2>
     
-    <table>
-
-    {% for book in books %}
-        <tr class="ligne_panier" data-value ="{{book.id}}">
-            <td class="article_panier">
-
-            <a href="{{ path("details_bd", {"slug":book.slug}) }}">
-                    <img class="image_article" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
-                </a>
-                <p class="titre_article">
-                    Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
-                </p>                
-                <button class="glyphicon glyphicon-remove-circle bt_suppr" data-value = "{{ path("supprPanier", {id:book.id} )}}" ></button>
-                <p class="sup_article">Retirer du panier</p>
-            </td>
-        </tr>
-    {% endfor %}
+    <div id="div_etape_panier">
+        <p><span class="active_etape_panier">Mon panier</span> > Choix du relais > Récapitulatif</p>
+    </div>
+    <h2>Voici votre panier:</h2>
+    
+    <table id="table_panier">
+        {% for book in books %}
+            <tr class="ligne_panier" data-value ="{{book.id}}">
+                <td class="">
+                    <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                        <img class="image_article" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
+                    </a>
+                </td>
+                <td class="">
+                    <p class="">
+                        Titre : <a href="{{ path("details_bd", {"slug":book.slug}) }}">{{ book.titre }}</a>
+                    </p>                
+                </td>
+                <td class="">               
+                    <button class="btn btn-danger glyphicon glyphicon-remove-circle bt_suppr" data-value = "{{ path("supprPanier", {id:book.id} )}}" ></button>
+                </td>
+            </tr>
+        {% endfor %}
 
     </table>
-
-    <button id="bt_valider">Valider ce panier</button>
-    <button id="bt_back">Continuer à bouquiner</button>
-
+    <div id="div_btn_suivant">
+        <a href="{{ path('pickup') }}"><button class="btn btn-primary" id="bt_suivant">Suivant</button></a>
+    </div>
 {% endblock %}
 
