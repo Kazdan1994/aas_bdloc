@@ -9,6 +9,7 @@ use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Commande;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Book;
+use AppBundle\Entity\PickUpSpot;
 
 class PanierController extends Controller
 {
@@ -24,11 +25,20 @@ class PanierController extends Controller
         $user = $this->getUser();
         $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
 
-        $books = $com->getBooks();
-
-        $params = array(
-            'books' => $books,
-        );
+        if(isset($com))
+        {
+            $books = $com->getBooks();
+        
+            $params = array(
+                'books' => $books,
+            );
+        }
+        else
+        {
+            $params=array(
+                 'books'=>"",
+                );
+        }
 
         return $this->render('default/panier.html.twig', $params);
     }
@@ -70,6 +80,66 @@ class PanierController extends Controller
         return new Response($book->getStock());
         //supprimer livre Panier -> ajax ?
     }
+
+
+
+///////////CHOIX DU PICKUPSPOT/////////////
+
+    /**
+    *@Route("/pickup", name="pickup")
+    */
+    public function pickup()
+    {
+        //creation Repo
+        $manager = $this->container->get('doctrine')->getManager();
+
+        $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
+        $pickupRepo = $this->container->get('doctrine')->getRepository("AppBundle:PickUpSpot");
+
+
+        //chargement de la liste des pickupspots
+
+
+    }
+
+
+
+
+
+
+
+
+/////////VALIDATION COMMANDE///////////////
+
+    /**
+    *@Route("/validerCommande", name="validerCommande")
+    */
+    public function valider()
+    {
+        $manager = $this->container->get('doctrine')->getManager();
+        $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
+        
+        //récupèration user
+        $user = $this->getUser();
+        //on cherche la commande en cours dans la base de donéne
+        $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
+        
+        //on l'hydrate avec la date
+        $date = new Date('d,m,y');
+
+        //on l'hydrate avec le pickUpSpot choisi
+
+
+        //mise à jour du statut
+        $com->setStatut("validée"); 
+
+        //mise à jour base de donnée
+        $manager->persist($com);
+        $manager->flush();
+
+    }
+
+
 }
 
         

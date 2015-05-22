@@ -19,17 +19,19 @@ class CommandeController extends Controller
      */
     public function ajoutPanier($id)
     {
+
         $manager = $this->container->get('doctrine')->getManager();
 
         $bookRepo = $this->container->get('doctrine')->getRepository("AppBundle:Book");
         $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
 
+        //recupère le user en cours
         $user = $this->getUser();
 
         //si on a déjà une commande en cours 
        if($commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours")))
        {
-            $com= $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
+            $com = $commandeRepo->findOneBy(array("user"=>$user , "statut"=>"en_cours"));
             //si on trouve un objet dans la base, symfony va l'updater au lieu de créer une nouvelle ligne
 
        }
@@ -62,8 +64,7 @@ class CommandeController extends Controller
 
         $com->setStatut("en_cours");
 
-        //idem pour le user
-        
+        //ajout user à la commande       
         $com->setUser($user);
               
 
