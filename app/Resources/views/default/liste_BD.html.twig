@@ -28,17 +28,18 @@
     </aside>
     <div>
         <div id="block_resultat">
-            <form>
+            <form method="get">
                 <div class="form-group">
                     <fieldset>
                         <legend> Resultats </legend>
                         <select name="select_trier" class="form-control input-sm liste_tri">
-                            <option value="value1" selected>Trier par...</option> 
-                            <option value="value2" >Valeur 2</option>
-                            <option value="value3">Valeur 3</option>
+                            <option value="" selected>Trier par...</option>
+                            <option value="dateAjout">Date d’ajout au catalogue</option>
+                            <option value="ordreAlpha">Ordre alphabétique de titre</option>
+                            <option value="datePublished">Date de publication</option>
                         </select>
                         <select name="afficher_resultats" class="form-control input-sm liste_tri">
-                            <option value="value1" >afficher 5 résultats</option> 
+                            <option value="value1" >afficher 5 résultats</option>
                             <option value="value2" >afficher 10 résultats</option>
                             <option value="value3" selected>afficher 20 résultats</option>
                         </select>        

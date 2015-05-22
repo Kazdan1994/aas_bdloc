@@ -61,6 +61,21 @@ class BookRepository extends EntityRepository
             }
             /******************* PARTIE mots-clés ***********************/
 
+            /******************* PARTIE select trie ***********************/
+        if (!empty($_GET['value1']))
+        {
+            $tri = $_GET['select_trier'];
+
+            switch ($tri)
+            {
+                case 'ordreAlpha' :
+                    $qb->orderBy('b.titre', 'ASC');
+            }
+            //On ajoute les orWhere
+            $qb->orWhere('a.nom = :book'); //Si on cherche un nom d'auteur
+        }
+
+            /******************* PARTIE select trie ***********************/
 
 
 		//commun aux deux
