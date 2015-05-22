@@ -199,61 +199,51 @@ h3{
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE Panier///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/
-#pan
-{
-    margin-top: 120px;
+
+#table_panier{
+    width: 100%;
 }
 
-.article_panier
-{
-    margin-top: 2em;
-    height: 10em;
-    padding : 1%;
-    border: 1px solid black;
+#table_panier tr:nth-child(odd){
+    background: #EFF7FF;
+}
+#table_panier img{
+    width: 80px;
+}
+#table_panier tr{
+    border-bottom: 1px solid #b3c9dd;
+}
+#table_panier tr:first-child{
+    border-top: 1px solid #b3c9dd;
+}
+#table_panier tr td{
+    padding: 8px;
+}
+h2{
+    font-size: 1.4em;
+}
+#div_btn_suivant{
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
 }
 
-.image_article
-{
-    float: left;
-    width:10%;
-    height:8.5em;
+#div_etape_panier{
+    width: 100%;
+    text-align: center;
+}
+#div_etape_panier p{
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: -1px;color: rgba(4, 4, 4, 0.3);
 }
 
-.titre_article
-{
-    float: left;
-    margin: 5% 0 0 5%;
-    font-size: 120%;
+.active_etape_panier{
+    font-style:oblique;
+    font-size: 22px;
+    color: #08C;
 }
-
-.bt_suppr
-{
-    background: none;
-    border: 0px;
-    float: left;
-    margin: 5% 0 0 5%;
-    font-size: 120%;
-}
-
-.sup_article
-{
-    float: left;
-    margin-top:5.5%;
-    font-size: 80%;
-}
-
-#bt_valider
-{
-    margin-top:2em;
-    margin-right: 80%;
-}
-
-#bt_back
-{
-    margin-top:1em;
-}
-
-
 /*/////////////////////////////////////////////////////////////////////*/
 /*////////////////////////PAGE Informations perso///////////////////*/
 /*/////////////////////////////////////////////////////////////////////*/

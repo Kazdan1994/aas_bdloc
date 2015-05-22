@@ -15,7 +15,9 @@
     <div id="container">
         <header>
             <div style="height: 70px;">
-                <h3 class="text-muted">AAS-Bdloc</h3>
+                <a href="{{ path('liste_bd') }}" title="BDLOC | BD">
+                    <h3 class="text-muted">AAS-Bdloc</h3>
+                </a>
                 {% if app.user and is_granted("ROLE_USER") %}
                     <div id="pseudo_deco">
                         <p>Bonjour <strong>{{ app.user.prenom }}</strong></p>
