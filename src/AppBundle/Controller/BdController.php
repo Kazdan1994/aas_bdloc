@@ -13,10 +13,10 @@ class BdController extends Controller
     public function listBdAction(Request $request, $page)
     {
         /******************* PARTIE FILTRE checkbox ***********************/
-        $queryString = ('?'.$request->getQueryString()); //On récupère le filtre de l'url
+        $queryString = ('?' . $request->getQueryString()); //On récupère le filtre de l'url
 
         //Array vide si l'url n'a pas de filtres
-        $checkboxCategories =  array();
+        $checkboxCategories = array();
 
         if (!empty ($_GET['categories'])) //Si les filtres sont présent dans l'url
         {
@@ -35,6 +35,27 @@ class BdController extends Controller
         }
 
         /******************* PARTIE mots-clés ***********************/
+
+        /******************* FILTRES PARTIE trier ***********************/
+        $select_tri = '';
+
+        if (!empty($_GET['select_trier'])) //Si le filtre select est activé
+        {
+            $select_tri = $_GET['select_trier'];
+        }
+        /******************* FILTRES PARTIE trier ***********************/
+
+
+
+        /******************* FILTRES PARTIE résultat ***********************/
+        $select_resultat = '';
+
+        if (!empty($_GET['afficher_resultats']))
+        {
+            $select_resultat = $_GET['afficher_resultats'];
+        }
+
+        /******************* FILTRES PARTIE résultat ***********************/
         
         //on récupére le repository de Book
         $storyRepo = $this->get("doctrine")->getRepository("AppBundle:Book");

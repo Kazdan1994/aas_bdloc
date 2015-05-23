@@ -62,21 +62,59 @@ class BookRepository extends EntityRepository
             /******************* PARTIE mots-clés ***********************/
 
             /******************* PARTIE select trie ***********************/
-        if (!empty($_GET['value1']))
-        {
-            $tri = $_GET['select_trier'];
 
-            switch ($tri)
-            {
-                case 'ordreAlpha' :
-                    $qb->orderBy('b.titre', 'ASC');
-            }
-            //On ajoute les orWhere
-            $qb->orWhere('a.nom = :book'); //Si on cherche un nom d'auteur
+
+        if (!empty($_GET['select_option_ordreAlpha']))
+        {
+            //On passe le résultat de l'option choisie dans l'url
+            $options_tri_titres = $_GET['select_option_ordreAlpha'];
+
+            $qb->orderBy('b.titre, ASC') //On trie en fonction du titre et de manière ascendante (ici alphabétique)
+               ->setParameter('book', $options_tri_titres);
         }
+
+        /* Je ne sais pas où se trouve la date de publication dans la base */
+
+        /*
+        if (!empty($_GET['select_option_datePublished']))
+        {
+            $qb->orderBy('b.titre, ASC');
+        }
+        */
 
             /******************* PARTIE select trie ***********************/
 
+
+        /******************* PARTIE afficher un nombre de résultat ***********************/
+
+        switch (!empty($_GET['afficher_resultats']))
+        {
+            case 'cinq_resultats':
+                //On passe le résultat de l'option choisie dans l'url
+                $options_cinq_resultats = $_GET['cinq_resultats'];
+
+                $qb->setMaxResults(5)
+                    ->setParameter('book', $options_cinq_resultats);
+                break;
+
+            case 'dix_resultats':
+                //On passe le résultat de l'option choisie dans l'url
+                $options_dix_resultats = $_GET['dix_resultats'];
+
+                $qb->setMaxResults(10)
+                    ->setParameter('book', $options_dix_resultats);
+                break;
+
+            case 'vingt_resultats':
+                //On passe le résultat de l'option choisie dans l'url
+                $options_vingt_resultats = $_GET['vingt_resultats'];
+
+                $qb->setMaxResults(20)
+                    ->setParameter('book', $options_vingt_resultats);
+                break;
+        }
+
+        /******************* PARTIE afficher un nombre de résultat ***********************/
 
 		//commun aux deux
 		$query = $qb->getQuery();

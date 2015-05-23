@@ -32,16 +32,15 @@
                 <div class="form-group">
                     <fieldset>
                         <legend> Resultats </legend>
-                        <select name="select_trier" class="form-control input-sm liste_tri">
-                            <option value="" selected>Trier par...</option>
-                            <option value="dateAjout">Date d’ajout au catalogue</option>
-                            <option value="ordreAlpha">Ordre alphabétique de titre</option>
-                            <option value="datePublished">Date de publication</option>
+                        <select id="select_trier" name="select_trier" class="form-control input-sm liste_tri">
+                            <option id="select_option_default" name="select_option_default" selected>Trier par...</option>
+                            <option id="select_option_ordreAlpha" name="select_option_ordreAlpha">Ordre alphabétique de titre</option>
+                            <option id="select_option_datePublished" name="select_option_datePublished">Date de publication</option>
                         </select>
-                        <select name="afficher_resultats" class="form-control input-sm liste_tri">
-                            <option value="value1" >afficher 5 résultats</option>
-                            <option value="value2" >afficher 10 résultats</option>
-                            <option value="value3" selected>afficher 20 résultats</option>
+                        <select id="afficher_resultats" name="afficher_resultats" class="form-control input-sm liste_tri">
+                            <option id="cinq_resultats" name="cinq_resultats" value="cinq_resultats" >afficher 5 résultats</option>
+                            <option id="dix_resultats" name="dix_resultats" value="dix_resultats" >afficher 10 résultats</option>
+                            <option id="vingt_resultats" name="vingt_resultats" value="vingt_resultats" selected>afficher 20 résultats</option>
                         </select>        
                     </fieldset>
                 </div>
