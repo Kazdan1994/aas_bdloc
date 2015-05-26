@@ -26,8 +26,12 @@
         {% endfor %}
 
     </table>
+       {% if books is not empty %} 
     <div id="div_btn_suivant">
-        <a href="{{ path('pickup') }}" title="Supprimer"><button class="btn btn-primary" id="bt_suivant">Suivant</button></a>
+        <a href="{{ path('pickup') }}" title="Supprimer">
+            <button class="btn btn-primary" id="bt_suivant">Suivant</button>
+        </a>
     </div>
+        {% endif %}
 {% endblock %}
 

@@ -16,7 +16,8 @@ class PickUpSpotType extends AbstractType
     {
         $builder
             ->add('pickUpSpot','entity',array(
-                "class"=>"AppBundle:PickUpSpot",                    
+                "class"=>"AppBundle:PickUpSpot",
+                "label"=>"Relais",
                 ))           
             ->add('Valider votre Commande','submit')
             // ->add('nom'." ".'adresse'." "."cp"." "."ville", "select")
