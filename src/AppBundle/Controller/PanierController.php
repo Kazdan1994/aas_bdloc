@@ -134,7 +134,7 @@ class PanierController extends Controller
             $message = $mailer->createMessage()
                               ->setSubject("t'as un mail mec")
                               ->setFrom('remoi.test123@gmail.com')
-                              ->setTo('remoi.test123@gmail.com')
+                              ->setTo('boulasselsamir@gmail.com')
                               ->setBody($this->render("email/mail.html.twig", $params),'text/html');
             $mailer->send($message);            
             
