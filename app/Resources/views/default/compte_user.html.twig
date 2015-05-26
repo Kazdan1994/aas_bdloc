@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+ <div id="div_btn_suivant">
+        <a href="{{ path('userCommandes') }}" title="Mes commandes">
+            <button class="btn btn-primary" >Mes commandes</button>
+        </a>
+    </div>
         <h2 id="titre_compte">Voici vos informations personnelles : </h2>
 
         <div id="info_perso">
