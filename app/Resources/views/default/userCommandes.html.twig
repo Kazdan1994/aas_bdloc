@@ -1,11 +1,8 @@
-<p>Bonjour {{user.prenom}} {{user.nom}},<p>
-<p>Nous vous remercions d'avoir utiliser notre site internet. Vous trouverez les informations concernant votre commande:<p>
 
-
-<table style="margin-top:20px;">
+{% block body %}
+    <table style="margin-top:20px;">
 
     <caption> Récapitulatif de votre commande <c/aption>
-
 
         <tr>
             <th style=" text-align:center; border:1px solid black;  border-collapse:collaspe; witdh:100px;">Numéro de la commande</th>
@@ -25,6 +22,7 @@
             </th>
         </tr>
 
+    {% for commande in commandes %}
         <tr>
             <td style=" text-align:center; border:1px solid black;  border-collapse:collaspe;"> {{ commande.id }} </td>
 
@@ -46,12 +44,11 @@
 
             <td style=" text-align:center; border:1px solid black;  border-collapse:collaspe;"> {{ dtRam|date('d-m-Y') }} </dt>
         </tr>
+    {% endfor %}
+
 </table>
 
 <p style="font-size:90%;">* : estimation à plus ou moins quelques jours </p>
 <p>** : avant d'être passible d'amende</p>
 
-
-<p style="margin-top:20px;">Nous esperons que vous apprécierez votre lecture. A bientôt avec BdLoc.</p>
-
-<p>BdLoc, la BD à portez de nez...</p>
+{% endblock %} 

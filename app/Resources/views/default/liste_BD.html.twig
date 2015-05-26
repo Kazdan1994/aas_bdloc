@@ -72,22 +72,35 @@
                                     </a>
                                 </p>
                                 <p>Éditeur : {{ book.editeur }}</p>
-                                <p data-value="{{book.id}}">Stock : {{ book.stock }}</p>
 
-                                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                                {% if (book.stock > 0) %}
+                                    <p class="stock_bd" data-value="{{book.id}}">Stock : {{ book.stock }}</p>
 
-
-                                    <a href="{{ path("details_bd", {"slug":book.slug}) }}" data-toggle="modal" data-target="#myModal">
-                                        <button class="btn btn-primary">
-                                            Plus de détails !
-                                        </button>
-                                    </a>
-
-                                </a>
+                                        <a href="{{ path("details_bd", {"slug":book.slug}) }}" data-toggle="modal" data-target="#myModal">
+                                            <button class="btn btn-primary">
+                                                Plus de détails !
+                                            </button>
+                                        </a>
+                                    
 
                                 <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >
                                     Ajouter au panier !
                                 </button>
+                                {% else %}
+                                    <p data-value="{{book.id}}">Stock : Indisponible</p>
+
+                                        <a href="{{ path("details_bd", {"slug":book.slug}) }}" data-toggle="modal" data-target="#myModal">
+                                            <button class="btn btn-primary">
+                                                Plus de détails !
+                                            </button>
+                                        </a>
+                                    
+
+                                <button class="btn btn-success bt_ajoutPanier disabled" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >
+                                    Ajouter au panier !
+                                </button>
+                                {% endif %}
+                               
                             </td>
                         </tr>
                     </table>

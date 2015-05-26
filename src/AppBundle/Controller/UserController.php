@@ -109,4 +109,33 @@ class UserController extends Controller {
     public function compteUser () {
         return $this->render("default/compte_user.html.twig");
     }
+    
+
+    /**
+     * @Route("/MesCommandes", name="userCommandes")
+     */
+    public function comUser() 
+    {
+        $manager = $this->container->get('doctrine')->getManager();
+        $user= $this->getUser();
+
+        $commandeRepo = $this->container->get("doctrine")->getRepository("AppBundle:Commande");
+        
+
+        $dateLivraison=new \DateTime('+2 days');
+        $dateRamene= new \DateTime('+15 days');
+
+        //chargement de la liste des commandes
+        $commandes = $commandeRepo->findAll();
+
+
+        $params = array(
+                "commande" => $commandes,
+                "user"=>$user,  
+                "dtLiv" => $dateLivraison,
+                "dtRam" => $dateRamene,    
+            ); 
+
+        return $this->render('default/userCommandes.html.twig', $params);
+    }
 }

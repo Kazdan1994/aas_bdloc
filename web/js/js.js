@@ -13,7 +13,7 @@ $(document).on('click',".bt_ajoutPanier", function() //bouton d'ajout au panier
                         {
                             console.log(r); // message response retourné dans commande controller
                             console.log("bt disabled"); // annonce la désactivation du bouton
-                            btn.siblings(".stock_bd").html("Stock :"+r);
+                            btn.siblings(".stock_bd").html("Stock : "+r);
                         }
                });
 });
