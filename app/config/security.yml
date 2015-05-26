@@ -29,6 +29,7 @@ security:
                 algorithm: sha512
                 iterations: 5000
 
-    # access_control:
-    #     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    #     - { path: ^/, roles: ROLE_USER }
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/a_propos, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

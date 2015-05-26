@@ -59,7 +59,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href="{{ path("details_bd", {"slug":book.slug}) }}">
+                                <a href="{{ path("details_bd", {"slug":book.slug}) }}" data-toggle="modal" data-target="#myModal">
                                     <img class="image_bd" src="{{app.request.basepath}}/img/{{book.couverture}}" alt="{{ book.titre }}">
                                 </a>
                                 <p class="detail_bd">
@@ -77,11 +77,17 @@
                                 <a href="{{ path("details_bd", {"slug":book.slug}) }}">
 
 
-                                    <button class="btn btn-primary" data-value="{{ path("ajoutPanier", {id:book.id} )}}" >Plus de détails !</button>
+                                    <a href="{{ path("details_bd", {"slug":book.slug}) }}" data-toggle="modal" data-target="#myModal">
+                                        <button class="btn btn-primary">
+                                            Plus de détails !
+                                        </button>
+                                    </a>
 
                                 </a>
 
-                                <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >Ajouter au panier !</button>
+                                <button class="btn btn-success bt_ajoutPanier" data-value=" {{ path("ajoutPanier", {id:book.id} )}}" >
+                                    Ajouter au panier !
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -117,7 +123,7 @@
 
 
 
-        <!-- Modal -->
+        <!-- Modal Auteur-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
    
@@ -126,6 +132,8 @@
 
                 </div>
             </div>
+        </div>
+
         {% else %}
             <p>Désolé nous n'avons pas reconnu votre requête</p>
         {% endif %}

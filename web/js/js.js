@@ -41,6 +41,13 @@ $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 });
 
+
+//Un fois le modal fermé on le supprime pour ne pas
+//réaficher le même résultat a chaque fois
 $('body').on('hidden.bs.modal', '.modal', function () {
   $(this).removeData('bs.modal');
 });
+
+
+
+
