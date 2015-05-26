@@ -89,7 +89,7 @@ class PanierController extends Controller
 ///////////CHOIX DU PICKUPSPOT + validation/////////////
 
     /**
-    *@Route("/pickupspot", name="pickup")
+    *@Route("/relais", name="pickup")
     */
     public function pickup(Request $request)
     {
