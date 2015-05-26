@@ -50,9 +50,19 @@ class BdController extends Controller
         /******************* FILTRES PARTIE résultat ***********************/
         $select_resultat = '';
 
-        if (!empty($_GET['afficher_resultats']))
+        if (!empty($_GET['cinq_resultats']))
         {
-            $select_resultat = $_GET['afficher_resultats'];
+            $select_resultat = $_GET['cinq_resultats'];
+        }
+
+        if (!empty($_GET['dix_resultats']))
+        {
+            $select_resultat = $_GET['dix_resultats'];
+        }
+
+        if (!empty($_GET['vingt_resultats']))
+        {
+            $select_resultat = $_GET['vingt_resultats'];
         }
 
         /******************* FILTRES PARTIE résultat ***********************/

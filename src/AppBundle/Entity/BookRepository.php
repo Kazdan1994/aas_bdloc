@@ -87,30 +87,30 @@ class BookRepository extends EntityRepository
 
         /******************* PARTIE afficher un nombre de résultat ***********************/
 
-        switch (!empty($_GET['afficher_resultats']))
+        switch (!empty($select_resultat))
         {
             case 'cinq_resultats':
                 //On passe le résultat de l'option choisie dans l'url
                 $options_cinq_resultats = $_GET['cinq_resultats'];
 
-                $qb->setMaxResults(5)
-                    ->setParameter('book', $options_cinq_resultats);
+                $qb->setMaxResults(0, 5)
+                   ->setParameter('book', $options_cinq_resultats);
                 break;
 
             case 'dix_resultats':
                 //On passe le résultat de l'option choisie dans l'url
                 $options_dix_resultats = $_GET['dix_resultats'];
 
-                $qb->setMaxResults(10)
-                    ->setParameter('book', $options_dix_resultats);
+                $qb->setMaxResults(0, 10)
+                   ->setParameter('book', $options_dix_resultats);
                 break;
 
             case 'vingt_resultats':
                 //On passe le résultat de l'option choisie dans l'url
                 $options_vingt_resultats = $_GET['vingt_resultats'];
 
-                $qb->setMaxResults(20)
-                    ->setParameter('book', $options_vingt_resultats);
+                $qb->setMaxResults(0, 20)
+                   ->setParameter('book', $options_vingt_resultats);
                 break;
         }
 
