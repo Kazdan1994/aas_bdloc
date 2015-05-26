@@ -126,14 +126,16 @@ class UserController extends Controller {
         $dateRamene= new \DateTime('+15 days');
 
         //chargement de la liste des commandes
-        $commandes = $commandeRepo->findAll();
+        $commandes = $commandeRepo->findBy(array("user"=>$user));
+
 
 
         $params = array(
-                "commande" => $commandes,
+                "commandes" => $commandes,
                 "user"=>$user,  
                 "dtLiv" => $dateLivraison,
-                "dtRam" => $dateRamene,    
+                "dtRam" => $dateRamene,
+   
             ); 
 
         return $this->render('default/userCommandes.html.twig', $params);
