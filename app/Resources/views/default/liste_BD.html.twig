@@ -150,12 +150,23 @@
             </div>
         </div>
 
-                {% elseif not paginationResults and not checkboxCategories %}
+                {% elseif checkboxCategories and not paginationResults %}
 
                 <div id="message_erreur_google">
                     <p>
                         Nous n'avons pas trouvé la page que vous cherchez
                     </p>
+                    <p>
+                        Explications :
+                    </p>
+                    <ul>
+                        <li>
+                            La page que vous cherchez à atteindre n'existe pas.
+                        </li>
+                        <li>
+                                Vous avez cherché une catégorie non existante.
+                        </li>
+                    </ul>
                     <p>
                         Suggestions :
                     </p>
@@ -163,42 +174,17 @@
                         <li>
                             Utilisez la barre de navigation horizontale pour choisir la page à atteindre.
                         </li>
+                        <li>
+                            Utilisez le menu de choix des catégories.
+                        </li>
                     </ul>
+                    <p>Ou</p>
                     <p>
                         Cliquez sur le lien ci-contre pour retourner à la liste de BD :
                         <a href="{{ path('liste_bd') }}">Liste de BD</a>
                     </p>
                 </div>
 
-            {% elseif checkboxCategories and not paginationResults %}
-
-                <div id="message_erreur_google">
-                    <p>
-                        Aucune catégorie trouvée pour cette recherche.
-                    </p>
-                    <p>
-                        Explications :
-                    </p>
-                    <ul>
-                        <li>
-                            Vous avez cherché une catégorie non existante
-                        </li>
-                    </ul>
-                    <p>
-                        Suggestions :
-                    </p>
-                    <ul>
-                        <li>
-                            Utilisez le menu de choix des catégories.
-                        </li>
-                    </ul>
-                    <p>
-                        ou
-                    </p>
-                    <p>
-                        <a href="{{ path('liste_bd') }}">Liste de BD</a>
-                    </p>
-                </div>
 
         {% elseif MotsCle %}
 
