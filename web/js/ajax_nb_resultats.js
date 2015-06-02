@@ -1,32 +1,82 @@
 $(document).ready(function ()
 {
-    $("#afficher_resultats").on("click", function ()
+    $('#bt_filtre2').hide();
+
+    $("#afficher_resultats").on("click", function (e)
     {
-        //On stocke les valeurs du select id="afficher_resultats" dans des variables
+        /*function xhr ()
+         {
+         var resultats = $("#afficher_resultats").val();
+
+         var request = new XMLHttpRequest();
+         request.onreadystatechange = function () {
+         if (this.readyState == 4) {
+         if (this.status === 200) {
+         console.log(this.responseText);
+         }
+         else {
+         alert(this.responseText);
+         }
+         }
+         };
+
+         request.open('GET', 'liste_bd?afficher_resultats=' + resultats, true);
+         request.send();
+         request = null;
+         }
+         */
+
         var resultats = $("#afficher_resultats").val();
 
-        var currentLocation =  document.location.href;
+        switch (resultats)
+        {
+            case 'cinq_resultats':
 
-        $.ajax(
-            currentLocation,
+                //On ajoute à la requête une limite de 5 résultats
+                $('tbody:nth-child(5)').hide();
+                break;
+
+            case 'dix_resultats':
+
+                //On ajoute à la requête une limite de 10 résultats
+                break;
+
+            case 'vingt_resultats':
+
+                //On ajoute à la requête une limite de 20 résultats
+                break;
+        }
+
+        /*
+        $.ajax({
+            type: 'GET',
+            url: 'liste_bd?afficher_resultats=' + resultats,
+            success: function ajaxSuccess(data, textStatus, jqXHR)
             {
-                type: "GET",
-                url: currentLocation,
-                data: "afficher_resultats=" +  resultats, // On fait passer nos variables, exactement comme en GET, au script php
-                success:
-                    function ajax_success ()
-                    {
-                        alert("Ajax marche !");
-                    },
-                error:
-                    function ajax_error ()
-                    {
-                        alert("Ajax is done !");
-                    },
-                complete: function afficher_resultats ()
+                switch (resultats)
                 {
+                    case 'cinq_resultats':
 
+                        //On ajoute à la requête une limite de 5 résultats
+                        //$('tbody:nth-child(n+5)').hide();
+                        $('tbody:nth-child(n+5)').css('border-color', 'red');
+                        break;
+
+                    case 'dix_resultats':
+
+                        //On ajoute à la requête une limite de 10 résultats
+                        break;
+
+                    case 'vingt_resultats':
+
+                        //On ajoute à la requête une limite de 20 résultats
+                        break;
                 }
-            })
+            },
+            error: function ajaxError(jqxhr) {
+                alert(jqxhr.responseText);
+            }
+        })
+        */
     })
 });

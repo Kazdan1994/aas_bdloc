@@ -4,12 +4,10 @@ body
 }
 #container
 {
-    margin: 0px auto;
-    margin-top:10px;
+    margin: 0 auto;
     background: white;
     max-width:960px;
     padding:20px;
-    border-radius: 0px;
     overflow: hidden;/* Empêche le dépassement des flottants. */
 }
 header{
@@ -90,7 +88,7 @@ header{
 /*/////////////////////////////////////////////////////////////////////*/
 
 
-/*/////// liste de checkbox //////*/
+/*/////// liste de checkbox + mots-clés //////*/
 #block_filtre
 {
     float:left;
@@ -116,9 +114,23 @@ fieldset label
     width:100%;
 }
 
-#bt_filtre
+#bt_filtre1
+ {
+     margin-top:10px;
+ }
+
+#bt_filtre2
 {
-    margin-top:10px;
+    margin-left:20px;
+}
+
+#message_erreur_google
+{
+    margin: 5%;
+}
+
+em {
+    font-weight: bold; /* Pour mettre le mot non trouvé en gras */
 }
 
 /*////// Bloc représentant la liste des BDs //////*/
@@ -127,7 +139,7 @@ fieldset label
     width: 700px;
     margin-left: 20px;
     box-sizing: border-box;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 0 10px;
     background: #ECECEC;
     float:left;
 }
@@ -139,7 +151,7 @@ fieldset label
     width: 100px;
     font-size: 100%; 
     margin:0 0 0 10%;
-    padding: 0% 0.5%;
+    padding: 0 0.5%;
 }
 
 .liste_tri

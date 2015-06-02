@@ -37,33 +37,36 @@ class BdController extends Controller
         /******************* PARTIE mots-clés ***********************/
 
         /******************* FILTRES PARTIE trier ***********************/
+       /*
         $select_tri = '';
 
         if (!empty($_GET['select_trier'])) //Si le filtre select est activé
         {
             $select_tri = $_GET['select_trier'];
         }
+       */
         /******************* FILTRES PARTIE trier ***********************/
 
 
 
         /******************* FILTRES PARTIE résultat ***********************/
+
         $select_resultat = '';
 
-        if (!empty($_GET['cinq_resultats']))
-        {
-            $select_resultat = $_GET['cinq_resultats'];
-        }
+            if (!empty($_GET['cinq_resultats']))
+            {
+                $select_resultat = $_GET['cinq_resultats'];
+            }
 
-        if (!empty($_GET['dix_resultats']))
-        {
-            $select_resultat = $_GET['dix_resultats'];
-        }
+            if (!empty($_GET['dix_resultats']))
+            {
+                $select_resultat = $_GET['dix_resultats'];
+            }
 
-        if (!empty($_GET['vingt_resultats']))
-        {
-            $select_resultat = $_GET['vingt_resultats'];
-        }
+            if (!empty($_GET['vingt_resultats']))
+            {
+                $select_resultat = $_GET['vingt_resultats'];
+            }
 
         /******************* FILTRES PARTIE résultat ***********************/
         
@@ -81,7 +84,9 @@ class BdController extends Controller
             "paginationResults" => $paginationResults,
             "categories"=> $CategoriesArray,
             "queryString" => $queryString,
-            "checkboxCategories" => $checkboxCategories
+            "checkboxCategories" => $checkboxCategories,
+            "MotsCle" => $MotsCle,
+            "select_resultat" => $select_resultat,
         );
 
         return $this->render('default/liste_bd.html.twig', $params);

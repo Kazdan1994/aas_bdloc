@@ -19,10 +19,10 @@
                 {% endfor %}
 
                 <label for="search"></label>
-                <input id="input_mots_cles" name="input_mots_cles" type="text" placeholder="Mots-clés"/>
+                <input id="input_mots_cles" name="input_mots_cles" type="text" placeholder="Mots-clés" autofocus="" />
                 <p>La recherche est réalisée dans les champs suivants : Titre et Auteurs</p>
 
-                <button type="submit" class="btn btn-default" id="bt_filtre">Filtrer</button>
+                <button type="submit" class="btn btn-default" id="bt_filtre1">Filtrer</button>
             </fieldset>
         </form>
     </aside>
@@ -32,16 +32,19 @@
                 <div class="form-group">
                     <fieldset>
                         <legend> Resultats </legend>
+                        <!--
                         <select id="select_trier" name="select_trier" class="form-control input-sm liste_tri">
                             <option id="select_option_default" name="select_option_default" selected>Trier par...</option>
                             <option id="select_option_ordreAlpha" name="select_option_ordreAlpha">Ordre alphabétique de titre</option>
                             <option id="select_option_datePublished" name="select_option_datePublished">Date de publication</option>
                         </select>
+                        -->
                         <select id="afficher_resultats" name="afficher_resultats" class="form-control input-sm liste_tri">
                             <option id="cinq_resultats" name="cinq_resultats" value="cinq_resultats" >afficher 5 résultats</option>
                             <option id="dix_resultats" name="dix_resultats" value="dix_resultats" >afficher 10 résultats</option>
                             <option id="vingt_resultats" name="vingt_resultats" value="vingt_resultats" selected>afficher 20 résultats</option>
-                        </select>        
+                        </select>
+                        <button type="submit" class="btn btn-default" id="bt_filtre2">Filtrer</button>
                     </fieldset>
                 </div>
             </form>
@@ -147,8 +150,83 @@
             </div>
         </div>
 
-        {% else %}
-            <p>Désolé nous n'avons pas reconnu votre requête</p>
+                {% elseif not paginationResults and not checkboxCategories %}
+
+                <div id="message_erreur_google">
+                    <p>
+                        Nous n'avons pas trouvé la page que vous cherchez
+                    </p>
+                    <p>
+                        Suggestions :
+                    </p>
+                    <ul>
+                        <li>
+                            Utilisez la barre de navigation horizontale pour choisir la page à atteindre.
+                        </li>
+                    </ul>
+                    <p>
+                        Cliquez sur le lien ci-contre pour retourner à la liste de BD :
+                        <a href="{{ path('liste_bd') }}">Liste de BD</a>
+                    </p>
+                </div>
+
+            {% elseif checkboxCategories and not paginationResults %}
+
+                <div id="message_erreur_google">
+                    <p>
+                        Aucune catégorie trouvée pour cette recherche.
+                    </p>
+                    <p>
+                        Explications :
+                    </p>
+                    <ul>
+                        <li>
+                            Vous avez cherché une catégorie non existante
+                        </li>
+                    </ul>
+                    <p>
+                        Suggestions :
+                    </p>
+                    <ul>
+                        <li>
+                            Utilisez le menu de choix des catégories.
+                        </li>
+                    </ul>
+                    <p>
+                        ou
+                    </p>
+                    <p>
+                        <a href="{{ path('liste_bd') }}">Liste de BD</a>
+                    </p>
+                </div>
+
+        {% elseif MotsCle %}
+
+            <div id="message_erreur_google">
+                <p>
+                    Aucun document ne correspond aux termes de recherche spécifiés (<em>{{ MotsCle }}</em>).
+                </p>
+                <p>
+                    Suggestions :
+                </p>
+                <ul>
+                    <li>
+                        Vérifiez l’orthographe des termes de recherche.
+                    </li>
+                    <li>
+                        Essayez d'autres mots.
+                    </li>
+                    <li>
+                        Utilisez des mots clés plus généraux.
+                    </li>
+                </ul>
+
+                <p>
+                    Cliquez sur le lien ci-contre pour retourner à la liste de BD :
+                    <a href="{{ path('liste_bd') }}">Revenir à la liste de BD</a>
+                </p>
+            </div>
+
         {% endif %}
     {% endblock %}
 
