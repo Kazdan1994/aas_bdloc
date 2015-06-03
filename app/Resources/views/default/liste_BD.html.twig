@@ -44,7 +44,6 @@
                             <option id="dix_resultats" name="dix_resultats" value="dix_resultats" >afficher 10 résultats</option>
                             <option id="vingt_resultats" name="vingt_resultats" value="vingt_resultats" selected>afficher 20 résultats</option>
                         </select>
-                        <button type="submit" class="btn btn-default" id="bt_filtre2">Filtrer</button>
                     </fieldset>
                 </div>
             </form>
@@ -150,14 +149,14 @@
             </div>
         </div>
 
-                {% elseif checkboxCategories and not paginationResults %}
+                {% elseif checkboxCategories and not MotsCle %}
 
                 <div id="message_erreur_google">
-                    <p>
-                        Nous n'avons pas trouvé la page que vous cherchez
+                    <p class="page_not_found">
+                        Nous n'avons pas trouvé la page que vous cherchez.
                     </p>
                     <p>
-                        Explications :
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAdCAYAAACwuqxLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAhdEVYdENyZWF0aW9uIFRpbWUAMjAxNTowNjowMiAyMzowMToxNUrMHLwAAAEISURBVEhL7ZbBCYQwEEUn24E12II9WIJYgi3YgR1oBVbgxat1aAWKJczuX0YIMZpV42HBB0H8hvnJTDKo+APdyEuet/EYOHkMnKwMpmmiqqpoGAZRLoKLZtJ1HcdxzEVRiHIeqwHI85z7vucsy7hpGlGPs2mA4MsOsCMYQTvKpgEoy5LHcZQ3/hpi6JqLXQMEQqp0Fq2ua1H22TUACIQUmUCDke2bjtMAmLvQwQKWA2Hjp4vWti0ppawjTVOa51lmWhCjTbBCTLONKIqupQgFDYJgFRialyLjSJrBkW8vxxRF0wOjdXi9aEmSfAOHYei/VaBwyPMtzQ75RYs4kw4bz3+Rk383IHoDzFzdpDbaeZ4AAAAASUVORK5CYII" alt="liste à puces fleches" />Explications :
                     </p>
                     <ul>
                         <li>
@@ -168,14 +167,14 @@
                         </li>
                     </ul>
                     <p>
-                        Suggestions :
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAdCAYAAACwuqxLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAhdEVYdENyZWF0aW9uIFRpbWUAMjAxNTowNjowMiAyMzowMToxNUrMHLwAAAEISURBVEhL7ZbBCYQwEEUn24E12II9WIJYgi3YgR1oBVbgxat1aAWKJczuX0YIMZpV42HBB0H8hvnJTDKo+APdyEuet/EYOHkMnKwMpmmiqqpoGAZRLoKLZtJ1HcdxzEVRiHIeqwHI85z7vucsy7hpGlGPs2mA4MsOsCMYQTvKpgEoy5LHcZQ3/hpi6JqLXQMEQqp0Fq2ua1H22TUACIQUmUCDke2bjtMAmLvQwQKWA2Hjp4vWti0ppawjTVOa51lmWhCjTbBCTLONKIqupQgFDYJgFRialyLjSJrBkW8vxxRF0wOjdXi9aEmSfAOHYei/VaBwyPMtzQ75RYs4kw4bz3+Rk383IHoDzFzdpDbaeZ4AAAAASUVORK5CYII" alt="liste à puces fleches" />Suggestions :
                     </p>
                     <ul>
                         <li>
-                            Utilisez la barre de navigation horizontale pour choisir la page à atteindre.
+                            Utilisez le menu de choix des catégories.
                         </li>
                         <li>
-                            Utilisez le menu de choix des catégories.
+                            Utilisez le moteur de recherche par mots-clés.
                         </li>
                     </ul>
                     <p>Ou</p>
@@ -186,7 +185,8 @@
                 </div>
 
 
-        {% elseif MotsCle %}
+
+        {% elseif MotsCle and (checkboxCategories or not checkboxCategories) %}
 
             <div id="message_erreur_google">
                 <p>

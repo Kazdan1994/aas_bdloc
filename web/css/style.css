@@ -2,7 +2,7 @@ body
 {
     background: grey;
 }
-#container
+.container
 {
     margin: 0 auto;
     background: white;
